@@ -1,2 +1,49 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% content_for(:title) do %>
+  hello-courtier.com - trouvez le meilleur courtier en crédit immobilier près de chez vous !
+<% end %>
+
+<% content_for(:description) do %>
+  Courtiers en crédit immobilier, meilleur taux crédit immobilier, négociation de crédit immobilier, rachat de crédit : l'annuaire des courtiers près de chez vous.
+<% end %>
+
+<%= render 'shared/banner' %>
+
+<div class="layer text-center">
+  <div class="layer-title">
+    <h2>Toutes les infos pour bien choisir votre courtier en crédit immobilier</h2>
+  </div>
+  <div class="layer-content">
+    <div class="layer-content-item">
+      <div class="layer-content-item-picto">
+        <%= image_tag 'Administrator Male-96.png' %>
+      </div>
+      <div class="layer-content-description">
+        <h4>Annuaire des courtiers</h4>
+        <p>Trouvez facilement les agences de courtiers en prêt immobilier près de chez vous</p>
+      </div>
+    </div>
+
+    <div class="layer-content-item">
+      <div class="layer-content-item-picto">
+        <%= image_tag 'Talk Female-96.png' %>
+      </div>
+      <div class="layer-content-description">
+        <h4>Avis clients</h4>
+        <p>Identifiez les meilleurs courtiers grâce aux avis des clients qui les ont testé</p>
+      </div>
+    </div>
+
+    <div class="layer-content-item">
+      <div class="layer-content-item-picto">
+        <%= image_tag 'Discount-96.png' %>
+      </div>
+      <div class="layer-content-description">
+        <h4>Meilleurs taux</h4>
+        <p>Consultez les meilleurs taux de crédit immobilier obtenus par les courtiers</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+

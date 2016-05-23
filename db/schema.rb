@@ -11,14 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516234028) do
+ActiveRecord::Schema.define(version: 20160522130411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "broker_agencies", force: :cascade do |t|
     t.integer  "broker_id"
-    t.string   "business_status"
+    t.string   "business_status",  default: "none"
     t.string   "name"
     t.string   "phone_number"
     t.string   "email"
@@ -30,8 +30,12 @@ ActiveRecord::Schema.define(version: 20160516234028) do
     t.string   "zipcode"
     t.string   "city"
     t.integer  "creation_year"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "pjid"
+    t.string   "siret"
   end
 
   add_index "broker_agencies", ["broker_id"], name: "index_broker_agencies_on_broker_id", using: :btree

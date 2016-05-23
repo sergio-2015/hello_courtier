@@ -2,3 +2,38 @@
  * CSS code specific to home page
  * (margin/padding adjustments)
  * ------------------------------------- */
+
+.layer {
+  padding: 40px 80px;
+  background: $light-grey; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left bottom, $light-grey , #E0EAFC); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left bottom, $light-grey , #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  &-content {
+    padding: 40px 0px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    &-item {
+      width: 20em;
+      padding: 10px 10px;
+      &-picto {
+
+      }
+      &-description {
+
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
