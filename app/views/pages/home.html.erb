@@ -8,7 +8,7 @@
 
 <%= render 'shared/banner' %>
 
-<div class="layer text-center">
+<div class="layer text-center" id="layer-promises">
   <div class="layer-title">
     <h2>Toutes les infos pour bien choisir votre courtier en crédit immobilier</h2>
   </div>
@@ -17,7 +17,7 @@
       <div class="layer-content-item-picto">
         <%= image_tag 'Administrator Male-96.png' %>
       </div>
-      <div class="layer-content-description">
+      <div class="layer-content-item-description">
         <h4>Annuaire des courtiers</h4>
         <p>Trouvez facilement les agences de courtiers en prêt immobilier près de chez vous</p>
       </div>
@@ -27,7 +27,7 @@
       <div class="layer-content-item-picto">
         <%= image_tag 'Talk Female-96.png' %>
       </div>
-      <div class="layer-content-description">
+      <div class="layer-content-item-description">
         <h4>Avis clients</h4>
         <p>Identifiez les meilleurs courtiers grâce aux avis des clients qui les ont testé</p>
       </div>
@@ -37,7 +37,7 @@
       <div class="layer-content-item-picto">
         <%= image_tag 'Discount-96.png' %>
       </div>
-      <div class="layer-content-description">
+      <div class="layer-content-item-description">
         <h4>Meilleurs taux</h4>
         <p>Consultez les meilleurs taux de crédit immobilier obtenus par les courtiers</p>
       </div>
@@ -45,5 +45,193 @@
   </div>
 
 </div>
+
+
+<div class="container text-center">
+  <div class="layer-title" id="layer-meilleurstaux">
+    <h2>Meilleurs taux de crédit immobilier</h2>
+    <p title="TAEG des crédits immobiliers à taux fixe. Mise à jour le 19/05/2016">Baromètre réalisé par hello-courtier.com à partir des informations communiquées par les nos courtiers partenaires</p>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-2 col-sm-offset-1">
+      <div class="layer-content-item-subtitle">
+        <h6><strong>10</strong> ans</h6>
+      </div>
+      <div class="layer-content-item-rate">
+        <p>0,95%</p>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="layer-content-item-subtitle">
+        <h6><strong>15</strong> ans</h6>
+      </div>
+      <div class="layer-content-item-rate">
+        <p>1,25%</p>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="layer-content-item-subtitle">
+        <h6><strong>20</strong> ans</h6>
+      </div>
+      <div class="layer-content-item-rate">
+        <p>1,48%</p>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="layer-content-item-subtitle">
+        <h6><strong>25</strong> ans</h6>
+      </div>
+      <div class="layer-content-item-rate">
+        <p>1,75%</p>
+      </div>
+    </div>
+
+    <div class="col-sm-2">
+      <div class="layer-content-item-subtitle">
+        <h6><strong>30</strong> ans</h6>
+      </div>
+      <div class="layer-content-item-rate">
+        <p>2,53%</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 col-md-offset-2">
+      <div class="layer-content-item-button">
+        <%= link_to "Simuler un prêt immobilier", "#" %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="layer-content-item-button">
+        <%= link_to "Taux immobiliers par région", "#" %>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>
+
+
+<div class="layer-bootstrap text-center" id="layer-courtiers-partenaires">
+  <div class="layer-bootstrap-title">
+    <h2>Découvrez nos courtiers partenaires</h2>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% @sample_of_agencies.each do |agency| %>
+        <div class="col-sm-6 col-md-3">
+          <%= render 'shared/agency_card', agency: agency %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+<div class="layer-dde-propo">
+  <div class="layer-dde-propo-title text-center">
+    <h2>Comparez les taux !</h2>
+    <p>Faites une demande gratuite en ligne et comparez les offres des meilleurs courtiers près de chez vous, sans vous déplacer !</p>
+  </div>
+  <div class="layer-dde-propo-content">
+    <div class="layer-dde-propo-content-box">
+      <div class="layer-dde-propo-content-box-benefice">
+        <div class="layer-dde-propo-content-box-benefice-picto">
+          <i class="fa fa-check-square-o" aria-hidden="true"></i>
+        </div>
+        <div class="layer-dde-propo-content-box-benefice-phrase">
+          <h6>Décrivez votre projet en 3 minutes</h6>
+        </div>
+      </div>
+      <div class="layer-dde-propo-content-box-benefice">
+        <div class="layer-dde-propo-content-box-benefice-picto">
+          <i class="fa fa-check-square-o" aria-hidden="true"></i>
+        </div>
+        <div class="layer-dde-propo-content-box-benefice-phrase">
+          <h6>Demande gratuite et sans engagement</h6>
+        </div>
+      </div>
+      <div class="layer-dde-propo-content-box-benefice">
+        <div class="layer-dde-propo-content-box-benefice-picto">
+          <i class="fa fa-check-square-o" aria-hidden="true"></i>
+        </div>
+        <div class="layer-dde-propo-content-box-benefice-phrase">
+          <h6>Comparez jusqu'à 5 propositions de courtiers</h6>
+        </div>
+      </div>
+    </div>
+    <div class="layer-dde-propo-content-button text-center">
+      <%= link_to "Comparer les offres", "#" %>
+    </div>
+  </div>
+</div>
+
+
+<div class="layer text-center" id="layer-promises">
+  <div class="layer-title">
+    <h2>Faites-vous accompagner par un professionnel du crédit immobilier</h2>
+  </div>
+  <div class="layer-content">
+    <div class="layer-content-item" id="layer-accompagnement">
+      <div class="layer-content-item-picto">
+        <%= image_tag 'Why.png' %>
+      </div>
+      <div class="layer-content-item-description">
+        <h6>Pourquoi faire appel à un courtier en crédit immobilier ?</h6>
+        <p>La mission du courtier : vous trouver le meilleur crédit immobilier ! Mais son rôle ne s'arrête pas là. Découvrez comment votre courtier peut vous accompagner.</p>
+      </div>
+    </div>
+
+    <div class="layer-content-item" id="layer-accompagnement">
+      <div class="layer-content-item-picto">
+        <%= image_tag 'What.png' %>
+      </div>
+      <div class="layer-content-item-description">
+        <h6>Qu'en disent les clients qui ont déjà testé ?</h6>
+        <p>Financer l'achat d'un bien immobilier à crédit est complexe. Un professionnel vous fera gagner du temps et facilitera le dialogue avec la banque et le notaire.</p>
+      </div>
+    </div>
+
+    <div class="layer-content-item" id="layer-accompagnement">
+      <div class="layer-content-item-picto">
+        <%= image_tag 'Map.png' %>
+      </div>
+      <div class="layer-content-item-description">
+        <h6>Découvrez les courtiers près de chez vous</h6>
+        <p>Il y a forcément une agence de courtier près de chez vous. Parlez-leur de votre projet, ils pourront certainement vous aider !</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="layer-dde-propo">
+  <div class="layer-dde-propo-title text-center">
+    <h2>Vous êtes un courtier en crédit immobilier ?</h2>
+  </div>
+  <div class="layer-dde-propo-content">
+    <div class="layer-dde-propo-content-box">
+      <p>Notre mission : informer les futurs emprunteurs et les aider à choisir le meilleur courtier près de chez eux.  Et si c'était vous ?</p>
+    </div>
+    <div class="layer-dde-propo-content-button text-center">
+      <%= link_to "Devenir partenaire", "#" %>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 
 

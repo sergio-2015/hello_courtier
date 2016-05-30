@@ -1,0 +1,18 @@
+<div class="agency_card">
+  <div class="agency_card-picture">
+    <%= image_tag 'Brokeragency_default_card.jpg' %>
+  </div>
+  <div class="agency_card-content">
+    <div class="agency_card-content-title">
+      <p title="<%= agency.name %>"><strong><%= truncate(agency.name, length: 24) %></strong></p>
+    </div>
+    <div class="agency_card-content-infos">
+      <p><%= agency.city %> - <%= agency.zipcode %></p>
+
+    </div>
+    <div class="agency_card-content-button">
+      <%= link_to "Détails", "#" %>
+    </div>
+  </div>
+
+</div>

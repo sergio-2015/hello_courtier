@@ -26,14 +26,14 @@ task :scrap_pagesjaunes => :environment do
   visit('/')
   # save_and_open_page
   sleep 2
-  visit('/annuaire/chercherlespros?quoiqui=courtier+credit&ou=Alsace&idOu=R42&proximite=0')
+  visit('/annuaire/chercherlespros?quoiqui=courtier+credit&ou=08&proximite=0')
 
   @broker_pj_ids = []
   page_nb = find('#SEL-compteur').text.slice(-1).to_i
   puts "ok nb de pages trouvé #{page_nb}"
 
-  bouton_suivant = find('a.link_pagination')
-  puts "ok bouton suivant trouvé"
+  # bouton_suivant = find('a.link_pagination')
+  # puts "ok bouton suivant trouvé"
 
   (1..page_nb).each do |nb|
     puts nb
@@ -48,10 +48,16 @@ task :scrap_pagesjaunes => :environment do
   puts @broker_pj_ids.count
   @broker_pj_ids.uniq!
   puts @broker_pj_ids.count.to_s + " " + "dédoublonné"
+  @already_collected_pjids = BrokerAgency.all.pluck(:pjid)
+  # @remaining_pjid = @broker_pj_ids - @already_collected_pjids
+  # binding.pry
   i = 1
   @broker_pj_ids.each do |id|
-    create_the_broker_agency(id, i)
-    i = i + 1
+    if @already_collected_pjids.include?(id)
+    else
+      create_the_broker_agency(id, i)
+      i = i + 1
+    end
   end
 end
 
@@ -70,11 +76,10 @@ end
 
 def create_the_broker_agency(id, i)
   new_agency = BrokerAgency.new
-  new_agency.broker_id = 4
+  new_agency.broker_id = 1
   puts i
-  # if id.length < 9
-  #   puts id
-  #   visit("/pros/#{id}")
+  # if @already_collected_pjids.inlcude?(id)
+
   # else
     visit("/pros/detail?bloc_id=#{id}")
     new_agency.pjid = id
@@ -86,7 +91,7 @@ def create_the_broker_agency(id, i)
     new_agency.name = @nom
     puts @nom
     @num_tel = find('meta[property="og:business:contact_data:phone_number"]', visible: false)[:content]
-    new_agency.phone_number = @num_tel
+    new_agency.phone_number = @num_tel.gsub(/\s+/, "")
     puts @num_tel
     @adresse = find('meta[property="og:business:contact_data:street_address"]', visible: false)[:content]
     new_agency.street = @adresse
@@ -118,14 +123,28 @@ def create_the_broker_agency(id, i)
 
     # site web
     begin
-      @site_web = find(:xpath, "//HTML[1]/BODY[1]/SECTION[1]/DIV[2]/SECTION[1]/DIV[9]/DIV[1]/DIV[4]/UL[1]/LI[1]/A[1]/SPAN[2]").text
-      new_agency.website = @site_web
+      if find(:xpath, "//HTML[1]/BODY[1]/SECTION[1]/DIV[2]/SECTION[1]/DIV[6]")[:id] == "ancreBlocAvis"
+        @site_web = find(:xpath, "//HTML[1]/BODY[1]/SECTION[1]/DIV[2]/SECTION[1]/DIV[9]/DIV[1]/DIV[4]/UL[1]/LI[1]/A[1]/SPAN[2]").text
+        @site_web = "http://" + @site_web
+
+      elsif find(:xpath, "//HTML[1]/BODY[1]/SECTION[1]/DIV[2]/SECTION[1]/DIV[6]")[:id] == "blocAvis"
+        @site_web = find(:xpath, "//HTML[1]/BODY[1]/SECTION[1]/DIV[2]/SECTION[1]/DIV[8]/DIV[1]/DIV[4]/UL[1]/LI[1]/A[1]/SPAN[2]").text
+        @site_web = "http://" + @site_web
+      end
+      if @site_web != nil
+        new_agency.website = @site_web
+      end
       puts @site_web
     rescue Exception => e
       puts "pas de site web"
     end
+    # binding.pry
 
     new_agency.save
+
+    if new_agency.save != true
+      binding.pry
+    end
 
     puts "********************************************************"
     # save_and_open_page

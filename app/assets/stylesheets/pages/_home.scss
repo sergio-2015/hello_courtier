@@ -5,29 +5,126 @@
 
 .layer {
   padding: 40px 80px;
-  background: $light-grey; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left bottom, $light-grey , #E0EAFC); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left bottom, $light-grey , #E0EAFC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+  &-title {
+    padding-bottom: 40px;
+  }
   &-content {
-    padding: 40px 0px;
+    // padding: 40px 0px;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     &-item {
-      width: 20em;
+      max-width: 20em;
       padding: 10px 10px;
-      &-picto {
-
+      // margin-bottom: 20px;
+      &-picto { }
+      &-subtitle {
+        background-color: $light-grey;
+        padding: 4px 0px;
+        & h6 {
+          color: $sedondary-info !important;
+        }
       }
-      &-description {
-
+      &-description { }
+      &-rate {
+        padding: 20px 0px;
+        border: 1px solid $light-grey;
+        & p {
+          font-size: 40px;
+          font-weight: 900;
+        }
+      }
+      &-button {
+        margin: 40px 0px;
+        & a {
+          color: white;
+          padding: 14px 20px;
+          background-color: $sedondary-info;
+          border-radius: 3px;
+          &:hover {
+            background-color: $brand-blue;
+          }
+        }
       }
     }
   }
 }
 
+#layer-promises {
+  background: $light-grey; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left bottom, $light-grey , #fcfcfc); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left bottom, $light-grey , #fcfcfc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
 
+#layer-courtiers-partenaires {
+  background: $light-grey; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right bottom, $light-grey , #fcfcfc); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right bottom, $light-grey , #fcfcfc); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.layer-bootstrap {
+  padding: 40px 0px;
+  .layer-bootstrap-title {
+    padding-bottom: 40px;
+  }
+}
+
+#layer-meilleurstaux {
+  padding: 40px 80px;
+}
+
+#layer-accompagnement {
+  padding: 0px 20px;
+  & .layer-content-item-description {
+    text-align: justify;
+  }
+}
+
+
+.layer-dde-propo {
+  padding: 40px 0em;
+  &-title {
+    padding: 0px 2em 40px 2em;
+  }
+  &-content {
+    padding: 0em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &-box {
+      flex: 2 0 0;
+      &-benefice {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &-picto {
+          flex: 10% 0 0;
+          text-align: center;
+          font-size: 22px;
+          color: $brand-color;
+        }
+        &-phrase {
+          flex: 90% 0 0;
+        }
+      }
+    }
+    &-button {
+      flex: 1 0 0;
+      & a {
+        padding: 20px 2em;
+        // border: 1px solid $light-grey;
+        border-radius: 3px;
+        background-color: $brand-color;
+        color: white;
+        font-weight: 700;
+        &:hover {
+          background-color: $content;
+          border: 1px solid $light-grey;
+        }
+      }
+    }
+  }
+}
 
 
 
