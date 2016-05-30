@@ -7,9 +7,136 @@
 @import "bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import url(https://fonts.googleapis.com/css?family=Lato:400,100,300,900,700);
 
 // Your CSS
 @import "layout/index";
 @import "components/index";
 @import "pages/index";
 @import "vendor/index";
+
+
+
+
+h1 {
+  font-family: $header-font, sans-serif;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 1.2;
+  color: $content;
+}
+
+h2 {
+  font-family: $header-font, sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+  color: $content;
+}
+
+h3 {
+  font-family: $header-font, sans-serif;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.2;
+  color: $content;
+}
+
+h4 {
+  font-family: $header-font, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.2;
+  color: $content;
+}
+
+h5 {
+  font-family: $header-font, sans-serif;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.2;
+  color: $content;
+}
+
+h6 {
+  font-family: $header-font, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+  color: $content;
+}
+
+p {
+  font-family: $base-font, sans-serif;
+  font-weight: 300;
+  font-size: $base-size;
+  line-height: $base-height;
+  color: $content;
+}
+
+ul li {
+  font-family: $base-font, sans-serif;
+  font-weight: 300;
+  font-size: $base-size;
+  line-height: $base-height;
+  color: $content;
+}
+
+a {
+  font-family: $base-font, sans-serif;
+  font-weight: 300;
+  font-size: $base-size;
+  line-height: $base-height;
+  color: $content;
+  &:hover {
+    text-decoration: none;
+  }
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+@media screen and (max-width: $break-small) {
+  .layer-content-item-rate {
+    & p {
+      font-size: 20px;
+      font-weight: 900;
+    }
+  }
+  .agency_card {
+    margin: 0px 40px 30px 40px;
+    // background-color: red;
+  }
+  h4, h5, h6 {
+    font-size: 18px
+  }
+  #layer-accompagnement {
+    padding: 0px 18px;
+    & .layer-content-item-description {
+      text-align: left;
+    }
+  }
+}
+
+@media screen and (max-width: $break-medium) {
+  .agency_card-picture {
+    height: 10em;
+  }
+}
+
+
+@media screen and (min-width: $break-medium) {
+  .layer-dde-propo-content {
+    padding: 0em 6em;
+  }
+}
+
+@media screen and (min-width: $break-large) {
+  .layer-dde-propo-content {
+    padding: 0em 10em;
+  }
+}
+
+
+
+

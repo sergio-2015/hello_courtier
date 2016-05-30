@@ -1,0 +1,88 @@
+.banner {
+  height: calc(100vh);
+  /* if you have a 70px navbar => height: calc(100vh - 70px); */
+  background-size: cover !important;
+
+  &-content {
+    // color: white;
+    height: calc(100vh);
+    text-align: center;
+    display: flex;
+    // essayer space-between ou flex-start
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &-title h1 {
+      font-size: 50px;
+      font-weight: bold;
+      text-shadow: 0px 1px rgba(0, 0, 0, 0.2);
+      color: rgba(255, 255, 255, 0.9);
+    }
+    &-subtitle p {
+      font-size: 18px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.9);
+      margin-bottom: 20px;
+    }
+    &-pusher {
+      height: 8em;
+    }
+    &-cta {
+      margin-top: 16em;
+      // padding-top: 10em;
+      display: flex;
+      // flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      &-item {
+        margin: 10px 0px;
+        &-label {
+          color: white;
+          padding: 0px 10px;
+          font-weight: 400;
+          margin-bottom: 1px !important;
+        }
+        &-box {
+          padding: 0px 10px;
+          height: 40px;
+          border: 1px solid $light-grey;
+          border-radius: 3px !important;
+          color: $brand-color;
+          font-weight: 300;
+          & select {
+            background: image_url('sort.png') no-repeat 98% 50%;
+            overflow: hidden;
+            background-color: white;
+            -webkit-appearance: none;
+            border-radius: 0px !important;
+            width: 15em;
+          }
+          & input {
+            width: 8em;
+          }
+        }
+        &-button {
+          margin: 0px 16px;
+          padding: 0px 16px;
+          border: 1px solid $light-grey;
+          border-radius: 3px;
+          background-color: $brand-color;
+          color: white;
+          height: 40px;
+          font-weight: 300;
+          &:hover {
+            background-color: $content;
+            border: 1px solid $light-grey;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
