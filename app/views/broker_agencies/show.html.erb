@@ -1,0 +1,24 @@
+<% content_for(:title) do %>
+  hello-courtier.com, annuaire des courtiers en crédit immobilier
+<% end %>
+
+<% content_for(:description) do %>
+  Courtiers en crédit immobilier, meilleur taux crédit immobilier, négociation de crédit immobilier, rachat de crédit : l'annuaire des courtiers près de chez vous.
+<% end %>
+
+<div class="pusher_for_content"></div>
+
+<div>
+  <div>
+  <ul>
+    <li><strong><%= @broker_agency.name %> </strong></li>
+    <li><%= @broker_agency.street %>, <%= @broker_agency.zipcode %> <%= @broker_agency.city %></li>
+    <li><%= @broker_agency.phone_number %></li>
+    <li><%= @broker_agency.website %></li>
+    <li></li>
+  </ul>
+
+
+  </div>
+  <br>
+</div>

@@ -1,5 +1,7 @@
 class BrokerAgency < ActiveRecord::Base
   belongs_to :broker
+  has_many :broker_agency_expertises
+  has_many :expertises, through: :broker_agency_expertises
 
   validates :broker_id, :business_status, :name, :phone_number, :street, :zipcode, :city, presence: true
 

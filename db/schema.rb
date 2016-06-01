@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160522130411) do
+ActiveRecord::Schema.define(version: 20160531164914) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20160522130411) do
 
   add_index "broker_agencies", ["broker_id"], name: "index_broker_agencies_on_broker_id", using: :btree
 
+  create_table "broker_agency_expertises", force: :cascade do |t|
+    t.integer  "expertise_id"
+    t.integer  "broker_agency_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "broker_agency_expertises", ["broker_agency_id"], name: "index_broker_agency_expertises_on_broker_agency_id", using: :btree
+  add_index "broker_agency_expertises", ["expertise_id"], name: "index_broker_agency_expertises_on_expertise_id", using: :btree
+
   create_table "brokers", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -47,6 +57,12 @@ ActiveRecord::Schema.define(version: 20160522130411) do
     t.string   "email"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+  end
+
+  create_table "expertises", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,4 +84,6 @@ ActiveRecord::Schema.define(version: 20160522130411) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "broker_agencies", "brokers"
+  add_foreign_key "broker_agency_expertises", "broker_agencies"
+  add_foreign_key "broker_agency_expertises", "expertises"
 end
