@@ -1,0 +1,22 @@
+<% content_for(:title) do %>
+  hello-courtier.com, annuaire des courtiers en crédit immobilier
+<% end %>
+
+<% content_for(:description) do %>
+  Courtiers en crédit immobilier, meilleur taux crédit immobilier, négociation de crédit immobilier, rachat de crédit : l'annuaire des courtiers près de chez vous.
+<% end %>
+
+<div class="pusher_for_content"></div>
+
+<div>
+  <h1>Vous souhaitez <%= params[:projet] %>. <%= @result_agencies.count %> résultats correspondent à votre recherche</h1>
+  </div>
+
+<div>
+  <div>
+    <% @result_agencies.each do |agency| %>
+      <strong><%= agency.name %> </strong> : <%= agency.street %>, <%= agency.zipcode %> &nbsp<%= agency.city %> <%= link_to "Voir la fiche", broker_agency_path(agency) %><br>
+    <% end %>
+  </div>
+  <br>
+</div>

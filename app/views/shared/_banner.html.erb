@@ -7,19 +7,19 @@
 <!--     <div class="banner-content-subtitle">
       <p>Annuaire des courtiers, avis clients, meilleurs taux de crédit : toutes les infos pour bien choisir le partenaire de votre projet immobilier</p>
     </div> -->
-    <%= form_tag(root_path, method: :get, class: "form-inline") do %>
+    <%= form_tag(broker_agencies_path, method: :get, class: "form-inline") do %>
     <div class="banner-content-cta">
         <div class="banner-content-cta-item">
-          <%= label_tag :speciality, "Je souhaite ", class: "banner-content-cta-item-label" %>&nbsp
+          <%= label_tag :projet, "Je souhaite ", class: "banner-content-cta-item-label" %>&nbsp
         </div>
         <div class="banner-content-cta-item">
-          <%= select_tag :speciality, options_for_select(["acheter un logement", "construire un logement", "faire des travaux", "renégocier mon prêt immobilier", "réaliser un rachat de crédits"], "acheter un bien"), class: "banner-content-cta-item-box" %>&nbsp
+          <%= select_tag :projet, options_for_select(@user_wishes), class: "banner-content-cta-item-box" %>&nbsp
         </div>
         <div class="banner-content-cta-item">
           <%= label_tag :lieu, " à ", class: "banner-content-cta-item-label" %>&nbsp
         </div>
         <div class="banner-content-cta-item">
-          <%= text_field_tag :lieu, nil, placeholder: "ville, code postal...", class: "banner-content-cta-item-box" %>&nbsp
+          <%= text_field_tag :lieu, nil, placeholder: "code postal, département", class: "banner-content-cta-item-box" %>&nbsp
         </div>
         <div class="banner-content-cta-item">
           <%= submit_tag("Rechercher un courtier", class: "banner-content-cta-item-button") %>

@@ -1,4 +1,7 @@
 class PagesController < ApplicationController
+  include ExpertiseAreas
+  before_action :set_user_wishes_to_expertise_correspondance, only: :home
+
   def home
     random_agency_cards
   end
