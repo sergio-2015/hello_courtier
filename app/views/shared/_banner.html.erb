@@ -7,8 +7,8 @@
 <!--     <div class="banner-content-subtitle">
       <p>Annuaire des courtiers, avis clients, meilleurs taux de crédit : toutes les infos pour bien choisir le partenaire de votre projet immobilier</p>
     </div> -->
-    <%= form_tag(broker_agencies_path, method: :get, class: "form-inline") do %>
-    <div class="banner-content-cta">
+    <%= form_tag(broker_agencies_path, method: :get, id: "home_page_search", class: "form-inline") do %>
+      <div class="banner-content-cta">
         <div class="banner-content-cta-item">
           <%= label_tag :projet, "Je souhaite ", class: "banner-content-cta-item-label" %>&nbsp
         </div>
@@ -19,14 +19,22 @@
           <%= label_tag :lieu, " à ", class: "banner-content-cta-item-label" %>&nbsp
         </div>
         <div class="banner-content-cta-item">
-          <%= text_field_tag :lieu, nil, placeholder: "code postal, département", class: "banner-content-cta-item-box" %>&nbsp
+          <%= text_field_tag :lieu, nil, placeholder: "code postal, ville, département", autocomplete: "off", class: "banner-content-cta-item-box" %>&nbsp
+<!--           <div class="autocomplete-anwsers-bloc">
+            <ul class="autocomplete-answers-bloc-list">
+              <li data-vicopo="#lieu" id="autocomplete-anwser-item">
+                <strong data-vicopo-code-postal></strong>
+                <span data-vicopo-ville></span>
+              </li>
+            </ul>
+          </div> -->
         </div>
         <div class="banner-content-cta-item">
           <%= submit_tag("Rechercher un courtier", class: "banner-content-cta-item-button") %>
         </div>
 
 
-    </div>
+      </div>
     <% end %>
   </div>
 
@@ -34,26 +42,4 @@
 
 
 
-<!--
-background: #4CA1AF; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #4CA1AF , #C4E0E5); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #4CA1AF , #C4E0E5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-
-linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%)
- -->
-
-
-<!--
-
-background: #D1913C; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #D1913C , #FFD194); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #D1913C , #FFD194); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-         -->
-
-<!--
-
-background: #606c88; /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #606c88 , #3f4c6b); /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left, #606c88 , #3f4c6b); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-         -->

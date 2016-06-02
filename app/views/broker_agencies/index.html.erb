@@ -8,15 +8,81 @@
 
 <div class="pusher_for_content"></div>
 
-<div>
-  <h1>Vous souhaitez <%= params[:projet] %>. <%= @result_agencies.count %> résultats correspondent à votre recherche</h1>
+<div class="results">
+  <div class="results-header">
+    <div class="results-header-title">
+      <span><%= @final_results.count %> résultats correspondent à votre recherche</span>
+    </div>
+    <div class="results-header-affiner">
+      <a class="results-header-affiner-btn" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Affiner la recherche</a>
+    </div>
   </div>
+  <div class="results-pusher"></div>
 
-<div>
-  <div>
-    <% @result_agencies.each do |agency| %>
-      <strong><%= agency.name %> </strong> : <%= agency.street %>, <%= agency.zipcode %> &nbsp<%= agency.city %> <%= link_to "Voir la fiche", broker_agency_path(agency) %><br>
+  <div class="collapse results-search-form" id="collapseExample">
+    <%= form_tag(broker_agencies_path, method: :get, id: "home_page_search", class: "form-inline") do %>
+      <div class="results-search-form-bloc">
+        <p>Affiner la recherche</p>
+        <% possible_cities = cities_for_search(@final_results) %>
+        <% possible_cities.each do |city| %>
+          <div class="col-sm-6">
+            <div class="results-search-form-bloc-item">
+              <div class="results-search-form-bloc-item-box">
+                <%= check_box_tag "cities[]", city, false, class: "results-search-form-bloc-item-box" %>&nbsp
+              </div>
+              <div class="results-search-form-bloc-item-label" title="<%= city[0].capitalize %>">
+                <div class="results-search-form-bloc-item-label-big"><%= truncate(city[0].capitalize, length: 24) %></div>
+                <div class="results-search-form-bloc-item-label-small"> <span><%= city[1] %>&nbsp<%= "courtier".pluralize(city[1]) %></span></div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+<!--         <div class="results-search-form-bloc-item">
+          <%# label_tag :projet, "Projet", class: "results-search-form-bloc-item-label" %>&nbsp
+        </div>
+        <div class="results-search-form-bloc-item">
+          <%# select_tag :projet, options_for_select(@user_wishes), class: "results-search-form-bloc-item-box" %>&nbsp
+        </div> -->
+<!--         <div class="results-search-form-bloc-item">
+          <%# label_tag :lieu, " à ", class: "results-search-form-bloc-item-label" %>&nbsp
+        </div>
+        <div class="results-search-form-bloc-item">
+          <%# text_field_tag :lieu, nil, placeholder: "code postal, ville, département", autocomplete: "off", class: "results-search-form-bloc-item-box" %>&nbsp
+        </div> -->
+        <div class="col-sm-12">
+          <div class="results-search-form-bloc-button">
+            <%= submit_tag("Rechercher un courtier", class: "results-search-form-bloc-button-btn") %>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
-  <br>
+
+<!-- cities_for_search(broker_agencies) -->
+<%#= check_box_tag "companies[]", company[1], @companies.include?(company[1]) %>
+<!-- <span title="<%#= company[0] %>"><%#= truncate(company[0], length: 33) %></span> -->
+<!-- possible_cities.include?(city) -->
+
+  <div class="row results-cards text-center">
+    <% @final_results.each do |agency| %>
+      <div class="col-sm-4 results-cards-item">
+          <%= render 'shared/agency_card', agency: agency %>
+      </div>
+    <% end %>
+  </div>
+
+
+
 </div>
+
+
+
+
+
+
+
+
+
+
+
