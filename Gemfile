@@ -20,6 +20,7 @@ gem 'autoprefixer-rails'
 gem 'mechanize'
 gem 'capybara'
 gem 'poltergeist'
+gem 'headless', group: :production
 gem 'nokogiri'
 gem 'launchy', '~> 2.4', '>= 2.4.3'
 gem 'rest-client'
