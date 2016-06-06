@@ -20,7 +20,7 @@ end
 
 task :scrap_pagesjaunes => :environment do
 
-  @region = ["Champagne Ardenne", "R21"]
+  @region = ["Nord-Pas de Calais", "R31"]
 
   Capybara.app_host = "http://www.pagesjaunes.fr"
   include Capybara::DSL
