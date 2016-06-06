@@ -5,8 +5,9 @@ class BrokerAgenciesController < ApplicationController
   before_action :set_all_broker_agencies, :set_user_wishes_to_expertise_correspondance, :set_expertise_wanted_by_user, only: [:index]
 
   def index
-    set_geographic_search
     @result_agencies = BrokerAgency.joins(:broker_agency_expertises).where(broker_agency_expertises: { expertise_id: @expertise_wanted })
+    set_geographic_search
+    set_final_list
   end
 
   def show
@@ -23,23 +24,54 @@ class BrokerAgenciesController < ApplicationController
   end
 
   def set_geographic_search
-    if params[:lieu] == nil || params[:lieu] == ""
-      lieux = BrokerAgency.all.pluck(:zipcode)
+    @departement = []
+    @villes = []
+    lieu_input = params[:lieu]
+
+    if lieu_input == nil || lieu_input == ""
+      @departement = BrokerAgency.all.pluck(:zipcode)
+      @departement.map! do |dept|
+        dept.length > 2 ? dept.slice!(0..1) : dept
+      end
+      @departement.uniq!
+    # elsif params[:lieu].is_a? Numeric
+    elsif /\A[-+]?\d*\.?\d+\z/.match(lieu_input)
+      @departement << lieu_input.slice(0..1)
+      # @departement.map! do |dept|
+      #   dept.length > 2 ? dept.slice!(0..1) : dept
+      # end
+    # elsif params[:cities] != nil || params[:cities] != []
+    #   params[:cities].each do |city|
+    #     @villes << city
+    #   end
     else
-      lieux = []
-      lieux << params[:lieu].to_s
+      @villes << lieu_input
     end
-    lieux.map! do |lieu|
-      lieu.length > 2 ? lieu.slice!(0..1) : lieu
-    end
-    lieux.uniq!
-    # search_through_all_zipcodes(lieux)
   end
 
-  # def search_through_all_zipcodes(lieux)
-  #   zipcodes = @broker_agencies.pluck(:zipcode)
-  #   lieux
-  # end
+  def set_final_list
+    if @departement == []
+      selected_town = @villes.first.upcase
+      if @result_agencies.where(city: selected_town) == []
+        @final_results = @result_agencies
+      else
+        @final_results = @result_agencies.where(city: selected_town)
+      end
+
+
+    elsif @villes == []
+      @zipcodes_to_check = []
+      list_of_zipcodes = BrokerAgency.all.pluck(:zipcode).uniq!
+      list_of_zipcodes.each do |zipcode|
+        departement = zipcode.slice(0..1)
+        if @departement.include? departement
+          @zipcodes_to_check << zipcode
+        end
+      end
+      @final_results = @result_agencies.where(zipcode: @zipcodes_to_check)
+
+    end
+  end
 
 
 end

@@ -1,3 +1,126 @@
 // Place all the styles related to the BrokerAgencies controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.results {
+  max-width: 60%;
+  &-header {
+    padding: 20px 20px 20px 20px;
+    display: flex;
+    align-items: center;
+    background-color: $sedondary-info;
+    // position: fixed;
+    // left: 0px;
+    // top: 70px;
+    // z-index: 1;
+    // width: 60%;
+    &-title {
+      flex: 70% 0 0;
+      text-align: left;
+      font-family: $base-font, sans-serif;
+      font-weight: 300;
+      color: $light-grey;
+    }
+    &-affiner {
+      flex: 30% 0 0;
+      text-align: right;
+      &-btn {
+        color: $light-grey;
+        font-size: 14px;
+        padding: 8px 12px;
+        border: 1px solid $light-grey;
+        border-radius: 3px;
+        &:hover {
+          background-color: $light-grey;
+          color: $sedondary-info;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+  &-pusher {
+    // height: 60px;
+  }
+  &-search-form {
+    &-bloc {
+      padding: 20px 20px;
+      // border-right: 1px solid $sedondary-info;
+      background-color: $light-grey;
+      &-item {
+        margin: 0px 0px;
+        padding: 0px 20px;
+        border-radius: 3px;
+        font-weight: 300;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+          background-color: $sedondary-info;
+          color: $white;
+          & .results-search-form-bloc-item-label-small {
+            color: $white;
+          }
+        }
+        &-box {
+          flex: 10% 0 0;
+        }
+        &-label {
+          flex: 90% 0 0;
+          display: flex;
+          align-items: flex-end;
+          &-big {
+            flex: 65% 0 0;
+            font-size: 14px;
+            text-align: left;
+          }
+          &-small {
+            flex: 35% 0 0;
+            font-size: 12px;
+            text-align: right;
+            color: $sedondary-info;
+            & span {
+              text-align: right;
+            }
+          }
+        }
+      }
+      &-button {
+        padding: 20px;
+        text-align: center;
+
+        &-btn {
+          margin: 20px 0px;
+          color: white;
+          font-weight: 300;
+          font-size: 14px;
+          border: none;
+          padding: 14px 20px;
+          background-color: $sedondary-info;
+          border-radius: 3px;
+          &:hover {
+            background-color: $brand-blue;
+          }
+        }
+      }
+    }
+  }
+  &-cards {
+    padding: 30px 5px 20px 20px;
+    background-color: $light-grey;
+    // border-right: 1px solid $sedondary-info;
+    // margin-right: 0px !important;
+    &-cards-item {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+    }
+  }
+}
+
+
+
+
+
+
+
+
