@@ -118,7 +118,14 @@
 }
 
 
-
+#results-map {
+  max-width: 40%;
+  position: fixed !important;
+  right: 0px;
+  top: 70px;
+  width: 40%;
+  height: calc(100vh - 70px);
+}
 
 
 

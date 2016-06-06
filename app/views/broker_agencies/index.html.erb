@@ -8,6 +8,8 @@
 
 <div class="pusher_for_content"></div>
 
+<div id="results-map"></div>
+
 <div class="results">
   <div class="results-header">
     <div class="results-header-title">
@@ -81,6 +83,18 @@
 
 
 
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).on('ready', function() {
+      handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'results-map' } }, function(){
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+    })
+  <% end %>
+<% end %>
 
 
 

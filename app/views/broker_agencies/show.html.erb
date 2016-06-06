@@ -15,10 +15,22 @@
     <li><%= @broker_agency.street %>, <%= @broker_agency.zipcode %> <%= @broker_agency.city %></li>
     <li><%= @broker_agency.phone_number %></li>
     <li><%= @broker_agency.website %></li>
-    <li></li>
   </ul>
 
 
   </div>
   <br>
 </div>
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).ready(function() {
+      var coord = <%= raw @broker_agency_coordinates %>;
+      alert('Flat coordinates are ' + coord.latitude + ', ' + coord.longitude);
+    });
+  <% end %>
+<% end %>
+
+
+
+

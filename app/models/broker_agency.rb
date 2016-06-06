@@ -10,4 +10,7 @@ class BrokerAgency < ActiveRecord::Base
   validates_format_of :website, :with => /\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\z/, allow_blank: true
   # validates_format_of :twitter_account, :with => /\A([a-zA-Z](_?[a-zA-Z0-9]+)*_?|_([a-zA-Z0-9]+_?)*)\z/
   validates_format_of :zipcode, with: /\A[0-9]{5}\z/
+
+  geocoded_by :complete_adress
+  after_validation(:geocode, { :if => :complete_adress_changed? })
 end

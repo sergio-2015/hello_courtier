@@ -26,5 +26,17 @@ $(document).ready(function() {
 });
 
 
+$(document).scroll(function() {
+  var footerHeight = $('.footer').height();
+  var height_to_retrieve = footerHeight + 110;
+  console.log(height_to_retrieve)
+  if($('#results-map').offset().top + $('#results-map').height() >= $('.footer').offset().top)
+    $('#results-map').css('height', 'calc(100vh - '+height_to_retrieve+'px)');
+  if($(document).scrollTop() + window.innerHeight < $('.footer').offset().top)
+    $('#results-map').css('height', 'calc(100vh - 70px)'); // restore when you scroll up
+});
 
 
+
+
+// height: calc(100vh - 70px)

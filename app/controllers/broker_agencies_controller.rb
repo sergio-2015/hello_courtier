@@ -8,9 +8,17 @@ class BrokerAgenciesController < ApplicationController
     @result_agencies = BrokerAgency.joins(:broker_agency_expertises).where(broker_agency_expertises: { expertise_id: @expertise_wanted })
     set_geographic_search
     set_final_list
+
+    @markers = Gmaps4rails.build_markers(@final_results) do |agency, marker|
+      marker.lat agency.latitude
+      marker.lng agency.longitude
+    end
+
   end
 
   def show
+    # @alert_message = "Bienvenu sur la fiche de #{@broker_agency.name}"
+    @broker_agency_coordinates = { latitude: @broker_agency.latitude, longitude: @broker_agency.longitude }
   end
 
   private

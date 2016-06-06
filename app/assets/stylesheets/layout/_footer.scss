@@ -2,6 +2,7 @@
 .footer {
   padding: 20px 40px;
   background-color: $content;
+  z-index: 5;
   & a, p {
     color: $white;
     font-size: 12px;
