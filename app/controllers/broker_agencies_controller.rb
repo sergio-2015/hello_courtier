@@ -45,6 +45,7 @@ class BrokerAgenciesController < ApplicationController
     # elsif params[:lieu].is_a? Numeric
     elsif /\A[-+]?\d*\.?\d+\z/.match(lieu_input)
       @departement << lieu_input.slice(0..1)
+
       # @departement.map! do |dept|
       #   dept.length > 2 ? dept.slice!(0..1) : dept
       # end
@@ -76,6 +77,7 @@ class BrokerAgenciesController < ApplicationController
           @zipcodes_to_check << zipcode
         end
       end
+
       @final_results = @result_agencies.where(zipcode: @zipcodes_to_check)
 
     end

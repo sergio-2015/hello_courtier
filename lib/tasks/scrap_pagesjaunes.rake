@@ -26,7 +26,7 @@ task :scrap_pagesjaunes => :environment do
   visit('/')
   # save_and_open_page
   sleep 2
-  visit('/annuaire/chercherlespros?quoiqui=courtier+credit&ou=08&proximite=0')
+  visit('/annuaire/chercherlespros?quoiqui=courtier+credit+immobilier&ou=08&proximite=0')
 
   @broker_pj_ids = []
   page_nb = find('#SEL-compteur').text.slice(-1).to_i
@@ -107,6 +107,8 @@ def create_the_broker_agency(id, i)
     @longitude = find('meta[property="og:place:location:longitude"]', visible: false)[:content]
     new_agency.longitude = @longitude
     puts @longitude
+    new_agency.complete_adress = @adresse + ", " + @code_postal + " " + @ville
+    puts new_agency.complete_adress
 
     # siret
     begin
