@@ -1,7 +1,7 @@
 require 'capybara'
 require 'capybara/dsl'
 require 'capybara/poltergeist'
-require 'pry'
+
 
 Capybara.default_max_wait_time = 10
 Capybara.configure do |c|
@@ -50,7 +50,6 @@ task :scrap_pagesjaunes => :environment do
   puts @broker_pj_ids.count.to_s + " " + "dédoublonné"
   @already_collected_pjids = BrokerAgency.all.pluck(:pjid)
   # @remaining_pjid = @broker_pj_ids - @already_collected_pjids
-  # binding.pry
   i = 1
   @broker_pj_ids.each do |id|
     if @already_collected_pjids.include?(id)
@@ -138,12 +137,11 @@ def create_the_broker_agency(id, i)
     rescue Exception => e
       puts "pas de site web"
     end
-    # binding.pry
 
     new_agency.save
 
     if new_agency.save != true
-      binding.pry
+
     end
 
     puts "********************************************************"
