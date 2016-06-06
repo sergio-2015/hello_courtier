@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   include ExpertiseAreas
+  skip_before_action :authenticate_user!, only: :home
   before_action :set_user_wishes_to_expertise_correspondance, only: :home
 
   def home

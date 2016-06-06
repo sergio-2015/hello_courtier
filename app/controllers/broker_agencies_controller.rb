@@ -1,6 +1,7 @@
 class BrokerAgenciesController < ApplicationController
   include ExpertiseAreas
 
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_broker_agency, only: [:show]
   before_action :set_all_broker_agencies, :set_user_wishes_to_expertise_correspondance, :set_expertise_wanted_by_user, only: [:index]
 
