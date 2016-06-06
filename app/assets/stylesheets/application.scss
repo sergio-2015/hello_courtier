@@ -140,6 +140,32 @@ a {
   }
 }
 
+@media screen and (max-width: $break-small) {
+  .results {
+    max-width: 100%;
+  }
+}
+
+@media screen and (min-width: $break-medium) {
+  .results-header {
+    position: fixed;
+    left: 0px;
+    top: 70px;
+    z-index: 1;
+    width: 60%;
+  }
+  .results-pusher {
+    height: 60px;
+  }
+  .results-search-form-bloc {
+    border-right: 1px solid $sedondary-info;
+  }
+  .results-cards {
+    border-right: 1px solid $sedondary-info;
+    margin-right: 0px !important;
+  }
+}
+
 
 
 

@@ -1,17 +1,19 @@
 <div class="agency_card">
-  <div class="agency_card-picture">
-    <%= image_tag 'Brokeragency_default_card.jpg' %>
+  <div class="agency_card-picture" style="background-image: url('assets/courtier-random-<%= rand(1..18) %>.jpg')">
+  <!-- <div class="agency_card-picture" style="background-image: url('assets/courtier-random-18.jpg')"> -->
+
+    <%#= image_tag 'Brokeragency_default_card.jpg' %>
   </div>
   <div class="agency_card-content">
     <div class="agency_card-content-title">
-      <p title="<%= agency.name.downcase.capitalize %>"><strong><%= truncate(agency.name, length: 20) %></strong></p>
+      <p title="<%= agency.name.downcase.capitalize %>"><strong><%= truncate(agency.name, length: 17) %></strong></p>
     </div>
     <div class="agency_card-content-infos">
       <p><%= agency.city %> - <%= agency.zipcode %></p>
 
     </div>
     <div class="agency_card-content-button">
-      <%= link_to "Détails", "#" %>
+      <%= link_to "Détails", broker_agency_path(agency) %>
     </div>
   </div>
 

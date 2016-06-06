@@ -10,20 +10,20 @@
     display: flex;
     align-items: center;
     background-color: $sedondary-info;
-    position: fixed;
-    left: 0px;
-    top: 70px;
-    z-index: 1;
-    width: 60%;
+    // position: fixed;
+    // left: 0px;
+    // top: 70px;
+    // z-index: 1;
+    // width: 60%;
     &-title {
-      flex: 50% 0 0;
+      flex: 70% 0 0;
       text-align: left;
       font-family: $base-font, sans-serif;
       font-weight: 300;
       color: $light-grey;
     }
     &-affiner {
-      flex: 50% 0 0;
+      flex: 30% 0 0;
       text-align: right;
       &-btn {
         color: $light-grey;
@@ -40,15 +40,15 @@
     }
   }
   &-pusher {
-    height: 60px;
+    // height: 60px;
   }
   &-search-form {
     &-bloc {
       padding: 20px 20px;
-      border-right: 1px solid $sedondary-info;
+      // border-right: 1px solid $sedondary-info;
       background-color: $light-grey;
       &-item {
-        margin: 0px 30px;
+        margin: 0px 0px;
         padding: 0px 20px;
         border-radius: 3px;
         font-weight: 300;
@@ -69,15 +69,13 @@
           flex: 90% 0 0;
           display: flex;
           align-items: flex-end;
-          // justify-content: center;
           &-big {
-            flex: 70% 0 0;
+            flex: 65% 0 0;
             font-size: 14px;
             text-align: left;
           }
           &-small {
-            flex: 30% 0 0;
-            // padding-top: 2px;
+            flex: 35% 0 0;
             font-size: 12px;
             text-align: right;
             color: $sedondary-info;
@@ -89,16 +87,19 @@
       }
       &-button {
         padding: 20px;
+        text-align: center;
+
         &-btn {
-          margin: 40px 0px;
-          & a {
-            color: white;
-            padding: 14px 20px;
-            background-color: $sedondary-info;
-            border-radius: 3px;
-            &:hover {
-              background-color: $brand-blue;
-            }
+          margin: 20px 0px;
+          color: white;
+          font-weight: 300;
+          font-size: 14px;
+          border: none;
+          padding: 14px 20px;
+          background-color: $sedondary-info;
+          border-radius: 3px;
+          &:hover {
+            background-color: $brand-blue;
           }
         }
       }
@@ -107,11 +108,11 @@
   &-cards {
     padding: 30px 5px 20px 20px;
     background-color: $light-grey;
-    border-right: 1px solid $sedondary-info;
-    // margin-left: 0px !important;
-    margin-right: 0px !important;
+    // border-right: 1px solid $sedondary-info;
+    // margin-right: 0px !important;
     &-cards-item {
-
+      padding-left: 0px !important;
+      padding-right: 0px !important;
     }
   }
 }

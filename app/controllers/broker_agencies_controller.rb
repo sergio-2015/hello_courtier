@@ -25,7 +25,7 @@ class BrokerAgenciesController < ApplicationController
 
   def set_geographic_search
     @departement = []
-    @ville = []
+    @villes = []
     lieu_input = params[:lieu]
 
     if lieu_input == nil || lieu_input == ""
@@ -40,21 +40,26 @@ class BrokerAgenciesController < ApplicationController
       # @departement.map! do |dept|
       #   dept.length > 2 ? dept.slice!(0..1) : dept
       # end
+    # elsif params[:cities] != nil || params[:cities] != []
+    #   params[:cities].each do |city|
+    #     @villes << city
+    #   end
     else
-      @ville << lieu_input
+      @villes << lieu_input
     end
   end
 
   def set_final_list
     if @departement == []
-      selected_town = @ville.first.upcase
+      selected_town = @villes.first.upcase
       if @result_agencies.where(city: selected_town) == []
         @final_results = @result_agencies
       else
         @final_results = @result_agencies.where(city: selected_town)
       end
 
-    elsif @ville == []
+
+    elsif @villes == []
       @zipcodes_to_check = []
       list_of_zipcodes = BrokerAgency.all.pluck(:zipcode).uniq!
       list_of_zipcodes.each do |zipcode|
