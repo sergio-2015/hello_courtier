@@ -17,7 +17,7 @@ Capybara.register_driver :poltergeist do |app|
     :headers => { 'User-Agent' => "Mozilla/5.0 (Macintosh; Intel Mac OS X)" }
   )
 end
-# '--load-images=no',
+
 task :scrap_pagesjaunes => :environment do
 
   @region = ["Alsace", "R42"]
