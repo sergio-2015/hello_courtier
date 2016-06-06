@@ -20,36 +20,54 @@ end
 # '--load-images=no',
 task :scrap_pagesjaunes => :environment do
 
+  @region = ["Alsace", "R42"]
+
   Capybara.app_host = "http://www.pagesjaunes.fr"
   include Capybara::DSL
   page.driver.browser.clear_cookies
   visit('/')
   # save_and_open_page
   sleep 2
-  visit('/annuaire/chercherlespros?quoiqui=courtier+credit+immobilier&ou=08&proximite=0')
+  visit("/annuaire/chercherlespros?quoiqui=courtier+credit+immobilier&ou=#{@region[0]}&idOu=#{@region[1]}&proximite=0")
 
   @broker_pj_ids = []
   page_nb = find('#SEL-compteur').text.slice(-1).to_i
-  puts "ok nb de pages trouvé #{page_nb}"
+  puts "ok nb de pages trouvé = #{page_nb}"
 
-  # bouton_suivant = find('a.link_pagination')
-  # puts "ok bouton suivant trouvé"
+  find('.link_pagination.next.pj-lb.pj-link').trigger('click')
+  puts "ok page suivante cliquée"
 
-  (1..page_nb).each do |nb|
-    puts nb
-    if nb > 1
-      visit("/annuaire/chercherlespros?quoiqui=courtier+credit&ou=Alsace&idOu=R42&proximite=0&page=#{nb}")
-      collecte_id_brokers
-    else
-      collecte_id_brokers
+  if page_nb > 1
+    (1..page_nb).each do |nb|
+      if nb == 1
+        puts URI.parse(current_url)
+        collecte_id_brokers
+      elsif nb > 1
+        visit("/annuaire/chercherlespros?quoiqui=courtier+credit+immobilier&ou=#{@region[0]}&idOu=#{@region[1]}&proximite=0&page=#{nb}")
+        sleep 2
+        puts URI.parse(current_url)
+        collecte_id_brokers
+      end
     end
-
+  elsif page_nb == 1
+    collecte_id_brokers
   end
+
+  # (1..page_nb).each do |nb|
+  #   puts nb
+  #   if nb > 1
+  #     find('.link_pagination.next.pj-lb.pj-link').trigger('click')
+  #     # visit("/annuaire/chercherlespros?quoiqui=courtier+credit&ou=Alsace&idOu=R42&proximite=0&page=#{nb}")
+  #     collecte_id_brokers
+  #   else
+  #     collecte_id_brokers
+  #   end
+  # end
+
   puts @broker_pj_ids.count
   @broker_pj_ids.uniq!
   puts @broker_pj_ids.count.to_s + " " + "dédoublonné"
   @already_collected_pjids = BrokerAgency.all.pluck(:pjid)
-  # @remaining_pjid = @broker_pj_ids - @already_collected_pjids
   i = 1
   @broker_pj_ids.each do |id|
     if @already_collected_pjids.include?(id)
