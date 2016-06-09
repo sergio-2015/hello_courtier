@@ -1,0 +1,16 @@
+
+.cta-transaction {
+  & a {
+    padding: 20px 2em;
+    border-radius: 3px;
+    background-color: $brand-color;
+    color: white;
+    font-weight: 700;
+    &:hover {
+      background-color: $content;
+      border: 1px solid $light-grey;
+    }
+  }
+}
+
+

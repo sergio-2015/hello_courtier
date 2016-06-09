@@ -1,0 +1,71 @@
+
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "broker-form"}) do |f| %>
+  <%= f.error_notification %>
+
+  <% if resource_name == :broker %>
+    <div class="">
+      <%= f.input :first_name, required: true, autofocus: true, label: false, html: { class: "broker-form-field" }, placeholder: "Prénom" %>
+    </div>
+    <div class="">
+      <%= f.input :last_name, required: true, autofocus: true, label: false, class: "broker-form-field", placeholder: "Nom"  %>
+    </div>
+    <div class="">
+      <%#= f.input :phone_number, required: true, autofocus: true, label: false, class: "broker-form-field", placeholder: "Téléphone" %>
+    </div>
+  <% end %>
+
+  <div class="">
+    <%= f.input :email, required: true, autofocus: true, label: false, class: "broker-form-field", placeholder: "E-mail" %>
+  </div>
+  <div class="">
+    <%= f.input :password, required: true, label: false, class: "broker-form-field", placeholder: "Mot de passe", hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length) %>
+  </div>
+  <div class="">
+    <%#= f.input :password_confirmation, required: true, label: false, class: "broker-form-field", placeholder: "Confirmez votre mot de passe" %>
+  </div>
+
+  <div class="">
+    <%= f.button :submit, "Commencer", class: "btn btn-success btn-block", id: "button-broker-form" %>
+  </div>
+
+
+<% end %>
+
+
+<%#= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "form-horizontal"}) do |f| %>
+  <%#= f.error_notification %>
+
+  <%# if resource_name == :broker %>
+    <div class="form-group">
+      <%#= f.input :first_name, required: true, autofocus: true, label: false, class: "form-control", placeholder: "* prénom" %>
+    </div>
+    <div class="form-group">
+      <%#= f.input :last_name, required: true, autofocus: true, label: false, class: "form-control", placeholder: "* nom"  %>
+    </div>
+    <div class="form-group">
+      <%#= f.input :phone_number, required: true, autofocus: true, label: false, class: "form-control", placeholder: "* téléphone" %>
+    </div>
+  <%# end %>
+
+  <div class="form-group">
+    <%#= f.input :email, required: true, autofocus: true, label: false, class: "form-control", placeholder: "* email" %>
+  </div>
+  <div class="form-group">
+    <%#= f.input :password, required: true, label: false, class: "form-control", placeholder: "* mot de passe", hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length) %>
+  </div>
+  <div class="form-group">
+    <%#= f.input :password_confirmation, required: true, label: false, class: "form-control", placeholder: "* confirmez votre mot de passe" %>
+  </div>
+
+  <div class="form-group">
+    <%#= f.button :submit, "Commencer", class: "btn btn-success cta-transaction btn-block" %>
+  </div>
+
+
+<%# end %>
+
+
+<div class="text-center">
+  <%= render "devise/shared/links" %>
+</div>

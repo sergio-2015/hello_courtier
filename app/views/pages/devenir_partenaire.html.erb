@@ -1,0 +1,68 @@
+<% content_for(:title) do %>
+  Vous êtes un courtier ? Créez votre agence sur hello courtier !
+<% end %>
+
+<% content_for(:description) do %>
+  Courtiers en crédit immobilier, meilleur taux crédit immobilier, négociation de crédit immobilier, rachat de crédit : l'annuaire des courtiers près de chez vous.
+<% end %>
+
+<div class="pusher_for_content"></div>
+
+<%= render 'shared/become_broker_banner' %>
+
+<div class="broker-form-column">
+  <div class="broker-form-column-pusher"></div>
+  <div class="broker-form-column-title text-center">
+    <h4>Créez la fiche de votre agence !</h4>
+  </div>
+
+  <%= render 'devise/registrations/form' %>
+</div>
+
+<div class="layer-partenaire">
+  <h4>Augmentez votre visibilité auprès des futurs emprunteurs</h4>
+  <div class="devenir-partenaire">
+    <div class="devenir-partenaire-text">
+      <p><strong>hello-courtier.com</strong> est le site n°1 de la comparaison de courtiers en crédit immobilier. </p>
+      <p>Nous mettons à disposition des futurs propriétaires toutes les informations pour qu'ils trouvent facilement le meilleur courtier près de chez eux : annuaire des courtiers, avis clients, baromètre des taux, simulateurs, articles et actualités...</p>
+      <p><strong>Créez votre vitrine</strong> sur hello-courtier.com et augmentez votre visibilité auprès des cibles qui vous intéressent.</p>
+    </div>
+    <div class="devenir-partenaire-picto">
+      <%= image_tag 'Multiple Devices-96.png' %>
+    </div>
+  </div>
+</div>
+
+<div class="layer-partenaire">
+  <h4>Offrez une tribune à vos clients satisfaits !</h4>
+  <div class="devenir-partenaire">
+    <div class="devenir-partenaire-picto">
+      <%= image_tag 'Talk Female-96px.png' %>
+    </div>
+    <div class="devenir-partenaire-text">
+      <p><strong>" Un client satisfait en fait venir 3"</strong> paraît-il... mais seulement s'il communique sa satisfaction !</p>
+      <p>Les avis de vos clients satisfaits sont un puissant puissant et trop peu utilisé. hello-courtier.com collecte les avis de vos clients et leur offre une tribune privilégiée.</p>
+    </div>
+  </div>
+</div>
+
+<div class="layer-partenaire">
+  <h4>Attirez des contacts qualifiés</h4>
+  <div class="devenir-partenaire">
+    <div class="devenir-partenaire-text">
+      <p>Vous recevez des demandes qualifiées de la part de <strong>futurs propriétaires en rechreche d'un prêt immobilier</strong>.</p>
+      <p>A vous de montrer que vous pouvez leur faire la meilleure proposition !</p>
+    </div>
+    <div class="devenir-partenaire-picto">
+      <%= image_tag 'Reviewer Male-96.png' %>
+    </div>
+  </div>
+</div>
+
+
+
+          <% if current_broker == nil %>
+            <%= link_to "Devenir partenaire", new_broker_registration_path %>
+          <% else %>
+            <%= link_to "Déconnexion", destroy_broker_session_path, method: :delete %>
+          <% end %>

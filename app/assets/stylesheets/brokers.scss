@@ -1,3 +1,24 @@
 // Place all the styles related to the brokers controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.broker-form {
+  &-field {
+  }
+}
+
+
+.form-control::-webkit-input-placeholder { font-weight: 300; }
+.form-control:-moz-placeholder { font-weight: 300; }
+.form-control::-moz-placeholder { font-weight: 300; }
+.form-control:-ms-input-placeholder { font-weight: 300; }
+
+
+.authentification-links {
+  text-align: right;
+  padding: 0px 6px;
+  font-size: 14px;
+  font-weight: 300;
+  color: $sedondary-info;
+}
