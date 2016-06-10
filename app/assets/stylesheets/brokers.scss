@@ -22,3 +22,27 @@
   font-weight: 300;
   color: $sedondary-info;
 }
+
+.formulaire-signup-courtiers {
+  padding: 30px 0px 30px 0px;
+  &-title {
+    text-align: center;
+    padding: 10px 0px 0px 0px;
+  }
+  & .help-block {
+    font-size: 14px;
+    font-weight: 300;
+  }
+  & .alert, .alert-danger {
+    font-size: 14px;
+    font-weight: 300;
+    color: $sedondary-info;
+    border: none;
+    background-color: $light-grey !important;
+  }
+  &-form {
+    background-color: $light-grey;
+    border: 1px solid $sedondary-info;
+    padding: 10px;
+  }
+}

@@ -5,10 +5,10 @@
 
   <% if resource_name == :broker %>
     <div class="">
-      <%= f.input :first_name, required: true, autofocus: true, label: false, html: { class: "broker-form-field" }, placeholder: "Prénom" %>
+      <%= f.input :first_name, required: true, autofocus: true, label: false, class: "broker-form-field", placeholder: "Prénom", error: 'Veillez saisir votre prénom', include_blank: true %>
     </div>
     <div class="">
-      <%= f.input :last_name, required: true, autofocus: true, label: false, class: "broker-form-field", placeholder: "Nom"  %>
+      <%= f.input :last_name, required: true, autofocus: true, label: false, class: "broker-form-field", placeholder: "Nom", error: 'Veillez saisir votre nom' %>
     </div>
     <div class="">
       <%#= f.input :phone_number, required: true, autofocus: true, label: false, class: "broker-form-field", placeholder: "Téléphone" %>
@@ -16,10 +16,10 @@
   <% end %>
 
   <div class="">
-    <%= f.input :email, required: true, autofocus: true, label: false, class: "broker-form-field", placeholder: "E-mail" %>
+    <%= f.input :email, required: true, autofocus: true, label: false, class: "broker-form-field", placeholder: "E-mail", error: 'Veillez saisir votre email' %>
   </div>
   <div class="">
-    <%= f.input :password, required: true, label: false, class: "broker-form-field", placeholder: "Mot de passe", hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length) %>
+    <%= f.input :password, required: true, label: false, class: "broker-form-field", placeholder: "Mot de passe", hint: ("#{@minimum_password_length} caractères minimum" if @minimum_password_length), error: 'Veillez saisir un mot de passe de plus de 6 caractères' %>
   </div>
   <div class="">
     <%#= f.input :password_confirmation, required: true, label: false, class: "broker-form-field", placeholder: "Confirmez votre mot de passe" %>

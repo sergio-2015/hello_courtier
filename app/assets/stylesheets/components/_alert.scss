@@ -13,3 +13,13 @@
 .alert-warning {
   background: $red;
 }
+
+
+.alert, .alert-info, .alert-dismissible {
+  position: fixed;
+  top: 70px;
+  right: 0px;
+  width: 30%;
+  font-weight: 300;
+}
+
