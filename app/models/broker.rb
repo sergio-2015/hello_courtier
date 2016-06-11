@@ -8,7 +8,7 @@ class Broker < ActiveRecord::Base
   validates :first_name, :last_name, :email, presence: true
   validates_format_of :email, :with => /\A[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}\z/i
   # validates_format_of :phone_number, :with => /\A0[0-9]([-. ]?\d{2}){4}[-. ]?\z/
-
+  validates_uniqueness_of :email
 end
 
 

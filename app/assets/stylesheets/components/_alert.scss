@@ -15,11 +15,13 @@
 }
 
 
-.alert, .alert-info, .alert-dismissible {
+.alert-info, .alert-dismissible {
   position: fixed;
-  top: 70px;
-  right: 0px;
-  width: 30%;
+  top: 74px;
+  right: 4px;
+  width: 25%;
   font-weight: 300;
+  border: none;
+  border-radius: 3px;
 }
 
