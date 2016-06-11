@@ -1,0 +1,48 @@
+
+.broker-form-column {
+  background: RGBA(252, 252, 252, 0.4);
+  border-left: 1px solid $light-grey;
+  padding: 0px 20px 0px 20px;
+  max-width: 30%;
+  position: fixed;
+  right: 0px;
+  top: 70px;
+  width: 30%;
+  height: calc(100vh - 70px);
+  &-title {
+    padding: 10px 0px 10px 0px;
+  }
+  &-pusher {
+    height: 200px;
+  }
+}
+
+
+.layer-partenaire {
+  max-width: 70%;
+  padding: 60px 40px;
+  & h4 {
+    padding: 20px 0px;
+  }
+}
+
+.devenir-partenaire {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &-text {
+    flex: 80% 0 0;
+    text-align: justify;
+  }
+  &-picto {
+    flex: 20% 0 0;
+    text-align: center;
+  }
+}
+
+#helpBlock {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+

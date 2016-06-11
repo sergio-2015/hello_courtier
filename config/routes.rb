@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :brokers
   devise_for :users
 
   root to: 'pages#home'
 
   resources :broker_agencies, only: [:index, :show]
+
+  get 'devenir_partenaire', to: 'pages#devenir_partenaire'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
