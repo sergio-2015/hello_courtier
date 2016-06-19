@@ -25,6 +25,7 @@
 
 .formulaire-signup-courtiers {
   padding: 30px 0px 30px 0px;
+  margin: 40px 0px;
   &-title {
     text-align: center;
     padding: 10px 0px 0px 0px;
@@ -45,4 +46,151 @@
     border: 1px solid $sedondary-info;
     padding: 10px;
   }
+  & label {
+    font-size: 14px;
+    font-weight: 300;
+  }
 }
+
+.broker_signin {
+  // background: RGBA(252, 252, 252, 0.4);
+  // border: 1px solid $light-grey;
+
+  &-title {
+    text-align: center;
+    padding: 20px 0px 20px 0px;
+  }
+  &-form {
+
+  }
+}
+#modal_broker_signin_div {
+  background-color: $light-grey;
+  padding: 0px 40px 0px 40px;
+  & label {
+    font-weight: 300;
+    font-size: 14px;
+  }
+}
+
+#password_change {
+  cursor: pointer;
+}
+
+.password_change {
+  padding: 10px 0px 16px 0px;
+}
+
+.broker-profile {
+  display: flex;
+  flex-wrap: wrap;
+  &-column {
+    flex: 20% 0 0;
+    background-color: $light-grey;
+    &-title {
+      padding: 20px 0px;
+    }
+    &-image {
+      & img {
+        border: 1px solid $white;
+        border-radius: 50%;
+      }
+    }
+    &-infos {
+      padding: 40px 10px 40px 20px;
+      &-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &-item {
+          flex: 90% 0 0;
+        }
+        &-edit {
+          flex: 10% 0 0;
+          text-align: right;
+          & i {
+            font-size: 14px;
+          }
+        }
+      }
+      &-form {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        & input {
+          flex: 90% 0 0;
+          border: none;
+          border-radius: 3px;
+          margin: 0px;
+          padding: 2px;
+          max-width: 90%;
+          font-family: $base-font;
+          font-weight: 300;
+        }
+        & button {
+        flex: 10% 0 0;
+          border: none;
+          padding: 0px;
+          margin: 0px;
+          background: none;
+          text-align: right;
+        }
+      }
+    }
+  }
+  &-content {
+    flex: 80% 0 0;
+    &-banner {
+      background-size: cover;
+      &-title {
+        padding: 120px 40px;
+        & h1 {
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+
+.password_change_label {
+  font-size: 14px;
+  padding: 20px 0px 0px 0px;
+  & p {
+    &:hover {
+      color: $brand-color;
+    }
+  }
+}
+
+.password_change_form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  &-fields {
+    flex: 90% 0 0;
+    font-family: $base-font;
+    font-weight: 300;
+    & input {
+      border: none;
+      border-radius: 3px;
+      margin: 6px 0px;
+      padding: 2px;
+      width: 100%;
+    }
+  }
+  &-button {
+    flex: 10% 0 0;
+    text-align: right;
+    & button {
+      border: none;
+      padding: 0px;
+      margin: 0px;
+      background: none;
+    }
+  }
+
+}
+
+
+

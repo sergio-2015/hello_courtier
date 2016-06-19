@@ -1,7 +1,7 @@
 class BrokerAgenciesController < ApplicationController
   include ExpertiseAreas
 
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_person!, only: [:index, :show]
   before_action :set_broker_agency, only: [:show]
   before_action :set_all_broker_agencies, :set_user_wishes_to_expertise_correspondance, :set_expertise_wanted_by_user, only: [:index]
 
@@ -21,6 +21,13 @@ class BrokerAgenciesController < ApplicationController
     # @alert_message = "Bienvenu sur la fiche de #{@broker_agency.name}"
     @broker_agency_coordinates = { latitude: @broker_agency.latitude, longitude: @broker_agency.longitude }
   end
+
+  # def new
+  # end
+
+  # def create
+  # end
+
 
   private
 
