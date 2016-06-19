@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
-  devise_for :brokers
   devise_for :users
+  devise_for :brokers, controllers: { registrations: "registrations" }
+
 
   root to: 'pages#home'
 
   resources :broker_agencies, only: [:index, :show]
 
+  resources :brokers, only: [:edit] do
+    collection do
+      patch 'update_password'
+    end
+  end
+
   get 'devenir_partenaire', to: 'pages#devenir_partenaire'
+
+  get 'broker_management_page', to: 'brokers#broker_management_page'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

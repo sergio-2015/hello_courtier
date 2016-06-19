@@ -4,4 +4,5 @@
 //= require underscore
 //= require gmaps/google
 //= require pages
+//= require brokers
 //= require_tree .

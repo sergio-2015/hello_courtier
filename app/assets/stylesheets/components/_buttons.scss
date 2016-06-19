@@ -14,3 +14,24 @@
 }
 
 
+.service-transaction {
+  text-align: center;
+  padding: 20px;
+  & a {
+    padding: 8px 20px;
+    border: 1px solid $white;
+    border-radius: 3px;
+    // background-color: $brand-color;
+    color: white;
+    font-weight: 300;
+    &:hover {
+      background-color: $content;
+      border: 1px solid $light-grey;
+    }
+  }
+}
+
+
+
+
+

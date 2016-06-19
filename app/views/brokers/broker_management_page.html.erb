@@ -1,0 +1,114 @@
+<% content_for(:title) do %>
+  Enrichissez les informations présentes sur la fiche de votre agence
+<% end %>
+
+<% content_for(:description) do %>
+  Courtiers en crédit immobilier, meilleur taux crédit immobilier, négociation de crédit immobilier, rachat de crédit : l'annuaire des courtiers près de chez vous.
+<% end %>
+
+<div class="pusher_for_content"></div>
+
+
+
+<% if current_broker %>
+
+  <div class="broker-profile">
+
+    <div class="broker-profile-column">
+      <div class="broker-profile-column-title text-center">
+        <h4>Mon profile</h4>
+      </div>
+      <div class="broker-profile-column-image text-center">
+        <img src="http://loremflickr.com/100/100/portrait,miley,cyrus" alt="">
+      </div>
+      <div class="broker-profile-column-infos">
+        <div class="broker-profile-column-infos-box">
+          <div class="broker-profile-column-infos-box-item">
+            <p>Prénom : <%= current_broker.first_name %></p>
+          </div>
+          <div class="broker-profile-column-infos-box-edit">
+            <%= link_to edit_broker_registration_path do %>
+              <p><i class="fa fa-pencil-square-o" aria-hidden="true" id="edit_icon"></i></p>
+            <% end %>
+          </div>
+        </div>
+        <div class="broker-profile-column-infos-box">
+          <div class="broker-profile-column-infos-box-item">
+            <p>Nom : <%= current_broker.last_name %></p>
+          </div>
+          <div class="broker-profile-column-infos-box-edit">
+            <%= link_to edit_broker_registration_path do %>
+              <p><i class="fa fa-pencil-square-o" aria-hidden="true" id="edit_icon"></i></p>
+            <% end %>
+          </div>
+        </div>
+        <div class="broker-profile-column-infos-box">
+          <div class="broker-profile-column-infos-box-item">
+            <p>Email : <%= current_broker.email %></p>
+          </div>
+          <div class="broker-profile-column-infos-box-edit">
+            <%= link_to edit_broker_registration_path do %>
+              <p><i class="fa fa-pencil-square-o" aria-hidden="true" id="edit_icon"></i></p>
+            <% end %>
+          </div>
+        </div>
+        <% if current_broker.phone_number == nil || current_broker.phone_number == "" %>
+          <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: "broker-profile-column-infos-form" }) do |f| %>
+            <%= f.hidden_field :first_name, { value: current_broker.first_name } %>
+            <%= f.hidden_field :last_name, { value: current_broker.last_name } %>
+            <%= f.hidden_field :email, { value: current_broker.email } %>
+            <%= f.text_field :phone_number, placeholder: "Téléphone" %>
+            <%= f.button type: "submit"  do %>
+              <i class="fa fa-floppy-o" aria-hidden="true"></i>
+            <% end %>
+          <% end %>
+        <% else %>
+          <div class="broker-profile-column-infos-box">
+            <div class="broker-profile-column-infos-box-item">
+              <p>Téléphone : <%= current_broker.phone_number %></p>
+            </div>
+            <div class="broker-profile-column-infos-box-edit">
+              <%= link_to edit_broker_registration_path do %>
+                <p><i class="fa fa-pencil-square-o" aria-hidden="true" id="edit_icon"></i></p>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <div class="password_change_label" id="password_change" >
+          <p>Changer mon mot de passe</p>
+        </div>
+        <div class="hidden" id="password_change_fields" >
+          <%= form_for(@broker, :url => { :action => "update_password" }, html: { class: "password_change_form" } ) do |f| %>
+            <div class="password_change_form-fields">
+              <div><%= f.password_field :password, :autocomplete => "off", placeholder: "Nouveau mot de passe" %></div>
+              <%= f.password_field :password_confirmation, placeholder: "Confirmer le mot de passe" %>
+            </div>
+            <div class="password_change_form-button">
+              <%= f.button type: "submit"  do %>
+                <i class="fa fa-floppy-o" aria-hidden="true"></i>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="broker-profile-content">
+      <div class="broker-profile-content-banner" style="background-image: linear-gradient(to left, RGBA(96, 108, 136, 0.1) , RGBA(63, 76, 107, 0.3)), url('assets/rues_de_paris_3.jpg');">
+        <div class="broker-profile-content-banner-title text-center">
+          <h1>Donnez un maximum de visibilité à votre agence !</h1>
+        </div>
+      </div>
+      <% if current_broker.broker_agencies == nil %>
+        <div class="broker-profile-content-agency-form">
+        </div>
+      <% else %>
+      <% end %>
+
+
+
+
+
+    </div>
+  </div>
+<% end %>
+

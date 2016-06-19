@@ -1,0 +1,46 @@
+
+
+
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+<%#= simple_form_for(resource, as: resource_name, url: edit_broker_registration_path, html: { method: :put }) do |f| %>
+  <%= f.error_notification %>
+
+  <% if resource_name == :broker %>
+    <div class="">
+      <%= f.input :first_name, required: true, autofocus: true, label: false, class: "broker-form-field", placeholder: "Prénom", error: 'Veuillez saisir votre prénom', include_blank: true %>
+    </div>
+    <div class="">
+      <%= f.input :last_name, required: true, autofocus: true, label: false, class: "broker-form-field", placeholder: "Nom", error: 'Veuillez saisir votre nom' %>
+    </div>
+    <div class="">
+      <%= f.input :phone_number, required: false, autofocus: true, label: false, class: "broker-form-field", placeholder: "Téléphone" %>
+    </div>
+  <% end %>
+
+  <%= f.input :email, required: true, autofocus: true, label: false, class: "broker-form-field", placeholder: "E-mail", error: 'Veuillez saisir votre email' %>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+  <% end %>
+
+<!--   <div class="password_change text-center">
+    <a id="password_change">Changer de mot de passe ?</a>
+  </div> -->
+
+  <!-- <div id="password_change_fields" class="hidden"> -->
+    <%#= f.input :current_password, hint: "Veuillez saisir votre mot de passe actuel", required: true, label: false, class: "broker-form-field", placeholder: "Mot de passe actuel", error: 'Veuillez saisir votre mot de passe actuel' %>
+    <%#= f.input :password, autocomplete: "off", required: false, label: false, class: "broker-form-field", placeholder: "Nouveau mot de passe", error: 'Veuillez saisir votre nouveau mot de passe (6 caractères minimum)' %>
+    <%#= f.input :password_confirmation, required: false, label: false, class: "broker-form-field", placeholder: "Confirmez votre nouveau mot de passe", error: 'Veuillez confirmer votre nouveau mot de passe (6 caractères minimum)'  %>
+
+  <!-- </div> -->
+
+  <div class="">
+    <%= f.button :submit, "Valider", class: "btn btn-success btn-block", id: "button-broker-form"  %>
+  </div>
+<% end %>
+
+
+<div class="text-center">
+  <%= link_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Je comfirme la suppression de mon compte" }, method: :delete, class: "authentification-links" %>
+</div>
+<%#= link_to "Retour", :back %>
