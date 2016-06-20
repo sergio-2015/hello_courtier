@@ -22,14 +22,29 @@ class BrokerAgenciesController < ApplicationController
     @broker_agency_coordinates = { latitude: @broker_agency.latitude, longitude: @broker_agency.longitude }
   end
 
-  # def new
-  # end
+  def new
+    @new_agency = BrokerAgency.new
+  end
 
-  # def create
-  # end
+  def create
+    @new_agency = BrokerAgency.new(broker_agency_params)
+    @new_agency.broker = current_broker
+    @new_agency.business_status = "free"
+    if @new_agency.save
+      @new_agency.complete_adress = @new_agency.street + " " + @new_agency.zipcode + " " + @new_agency.city
+      @new_agency.save
+      redirect_to broker_management_page_path, notice: 'Votre agence a été enregistrée avec succès'
+    else
+      raise
+    end
+  end
 
 
   private
+
+  def broker_agency_params
+    params.require(:broker_agency).permit(:name, :phone_number, :email, :website, :twitter_account, :facebook_account, :linkedin_account, :street, :zipcode, :city, :creation_year, :siret, :description)
+  end
 
   def set_all_broker_agencies
     @broker_agencies = BrokerAgency.all

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160607082515) do
+ActiveRecord::Schema.define(version: 20160619221917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20160607082515) do
     t.string   "pjid"
     t.string   "siret"
     t.string   "complete_adress"
+    t.text     "description"
   end
 
   add_index "broker_agencies", ["broker_id"], name: "index_broker_agencies_on_broker_id", using: :btree
