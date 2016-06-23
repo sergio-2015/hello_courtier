@@ -228,13 +228,94 @@
                 </div>
               </div>
 
+              <div class="broker-profile-content-create_agency-form-main">
+                <div class="broker-profile-content-create_agency-form-main-group">
+                  <div class="broker-profile-content-create_agency-form-main-group-gauche">
+                    <%= f.label :expertise_id_1, "Expertise" %>
+                  </div>
+                  <div class="broker-profile-content-create_agency-form-main-group-centre">
+                    <%= f.select :expertise_id_1, options_from_collection_for_select(@expertises, :id, :name, 19) %>
+                  </div>
+                  <div class="broker-profile-content-create_agency-form-main-group-droite">
+                    <span id="add_an_expertise_1"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp Ajouter une expertise</span>
+                  </div>
+                </div>
+
+                  <div class="broker-profile-content-create_agency-form-main-group hidden" id="expertise_group_1">
+                    <div class="broker-profile-content-create_agency-form-main-group-gauche">
+                      <%= f.label :expertise_id_2, "Expertise" %>
+                    </div>
+                    <div class="broker-profile-content-create_agency-form-main-group-centre">
+                      <%= f.select :expertise_id_2, options_from_collection_for_select(@expertises, :id, :name, 20), {}, { disabled: true} %>
+                    </div>
+                    <div class="broker-profile-content-create_agency-form-main-group-droite">
+                      <span id="add_an_expertise_2"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp Ajouter une expertise</span>
+                    </div>
+                  </div>
+
+                  <div class="broker-profile-content-create_agency-form-main-group hidden" id="expertise_group_2">
+                    <div class="broker-profile-content-create_agency-form-main-group-gauche">
+                      <%= f.label :expertise_id_3, "Expertise" %>
+                    </div>
+                    <div class="broker-profile-content-create_agency-form-main-group-centre">
+                      <%= f.select :expertise_id_3, options_from_collection_for_select(@expertises, :id, :name, 21) %>
+                    </div>
+                    <div class="broker-profile-content-create_agency-form-main-group-droite">
+                      <span id="add_an_expertise_3"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp Ajouter une expertise</span>
+                    </div>
+                  </div>
+
+                  <div class="broker-profile-content-create_agency-form-main-group hidden" id="expertise_group_3">
+                    <div class="broker-profile-content-create_agency-form-main-group-gauche">
+                      <%= f.label :expertise_id_4, "Expertise" %>
+                    </div>
+                    <div class="broker-profile-content-create_agency-form-main-group-centre">
+                      <%= f.select :expertise_id_4, options_from_collection_for_select(@expertises, :id, :name, 22) %>
+                    </div>
+                    <div class="broker-profile-content-create_agency-form-main-group-droite">
+                    </div>
+                  </div>
+
+              </div>
+
+              <%#= fields_for @new_agency.expertises do |exp_form| %>
+                <%#= exp_form.check_box :expertise_id %>
+              <%# end %>
+
+              <%#= f.collection_check_boxes(:expertise_id_1, @expertises, :id, :name) do |cb| %>
+                <%#= cb.label(class: "checkbox-inline") { cb.check_box + cb.text } %>
+              <%# end %>
+              <%#= f.label :expertise_id_1, "Expertise" %>
+              <%#= f.select :expertise_id_1, options_from_collection_for_select(Expertise.all, :id, :name) %>
+              <%#= f.fields_for :expertise_id_1 do |cb| %>
+                <%# @expertises.each do |exp| %>
+                  <%#= cb.check_box(:expertise_1, {checked: true}, exp.id, nil) %>
+                  <%#= exp.name %>
+                <%# end %>
+              <%# end %>
+
+
+
+
+
+                <%#= f.label :expertise_ids, exp.name %>
+                <!-- <p><%#= "Crédit Immobilier" %></p> -->
+                <%#= f.check_box_tag :expertise_id_1, 19, checked: true %>
+<!--                 <p><%#= "Renégociation de crédit" %></p>
+                <%#= check_box_tag :expertise_id_2, 20, checked: true %>
+                <p><%#= "Rachat de crédit" %></p>
+                <%#= check_box_tag :expertise_id_3, 21, checked: true %>
+                <p><%#= "Investissement locatif" %></p>
+                <%#= check_box_tag :expertise_id_4, 22, checked: true %> -->
+              <%#= f.fields_for :broker_agency_expertises do |exp| %>
+                <%#= exp.label :expertise_id, "Expertise" %>
+                <%#= exp.select :expertise_id, options_from_collection_for_select(Expertise.all, :id, :name) %>
+              <%# end %>
+
               <div class="broker-profile-content-create_agency-form-button cta-transaction large_button text-center">
                 <%= f.button "Valider" %>
               </div>
 
-              <%#= f.button type: "submit"  do %>
-                <!-- <i class="fa fa-floppy-o" aria-hidden="true"></i> -->
-              <%# end %>
 
             <% end %>
           </div>

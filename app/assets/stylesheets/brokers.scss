@@ -180,6 +180,30 @@
             &-left {
               flex: 75% 0 0;
             }
+            &-gauche {
+              flex: 25% 0 0;
+            }
+            &-centre {
+              flex: 50% 0 0;
+              & select {
+                font-family: $base-font;
+                font-weight: 300;
+                color: sedondary-info;
+                background: image_url('sort.png') no-repeat 98% 50%;
+                overflow: hidden;
+                background-color: $light-grey;
+                -webkit-appearance: none;
+                border-radius: 3px !important;
+                border: none;
+                width: 100%;
+                padding: 5px;
+                margin: 4px 0px;
+              }
+            }
+            &-droite {
+              flex: 25% 0 0;
+              text-align: right;
+            }
           }
         }
         &-button {
@@ -231,4 +255,27 @@
 }
 
 
+#add_an_expertise_1 {
+  cursor: pointer;
+  font-family: $base-font;
+  font-weight: 300;
+  color: $sedondary-info;
+  font-size: 14px;
+}
+
+#add_an_expertise_2 {
+  cursor: pointer;
+  font-family: $base-font;
+  font-weight: 300;
+  color: $sedondary-info;
+  font-size: 14px;
+}
+
+#add_an_expertise_3 {
+  cursor: pointer;
+  font-family: $base-font;
+  font-weight: 300;
+  color: $sedondary-info;
+  font-size: 14px;
+}
 

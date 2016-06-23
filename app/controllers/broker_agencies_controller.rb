@@ -33,9 +33,17 @@ class BrokerAgenciesController < ApplicationController
     if @new_agency.save
       @new_agency.complete_adress = @new_agency.street + " " + @new_agency.zipcode + " " + @new_agency.city
       @new_agency.save
+
+      @new_agency.broker_agency_expertises.create(expertise_id: @new_agency.expertise_id_1, broker_agency_id: @new_agency.id)
+      @new_agency.broker_agency_expertises.create(expertise_id: @new_agency.expertise_id_2, broker_agency_id: @new_agency.id)
+      @new_agency.broker_agency_expertises.create(expertise_id: @new_agency.expertise_id_3, broker_agency_id: @new_agency.id)
+      @new_agency.broker_agency_expertises.create(expertise_id: @new_agency.expertise_id_4, broker_agency_id: @new_agency.id)
+
+      # @new_agency.broker_agency_expertises.create(expertise_id: @new_agency.expertise_ids, broker_agency_id: @new_agency.id)
+
       redirect_to broker_management_page_path, notice: 'Votre agence a été enregistrée avec succès'
     else
-      raise
+      raise # attention, mettre redirection vers new
     end
   end
 
@@ -43,7 +51,7 @@ class BrokerAgenciesController < ApplicationController
   private
 
   def broker_agency_params
-    params.require(:broker_agency).permit(:name, :phone_number, :email, :website, :twitter_account, :facebook_account, :linkedin_account, :street, :zipcode, :city, :creation_year, :siret, :description)
+    params.require(:broker_agency).permit(:name, :phone_number, :email, :website, :twitter_account, :facebook_account, :linkedin_account, :street, :zipcode, :city, :creation_year, :siret, :description, :expertise_id_1, :expertise_id_2, :expertise_id_3, :expertise_id_4)  #  , :expertise_id_1, :expertise_id_2, :expertise_id_3, :expertise_id_4     broker_agency_expertises_attributes: [:broker_agency_id], expertise_attributes: [:id]
   end
 
   def set_all_broker_agencies

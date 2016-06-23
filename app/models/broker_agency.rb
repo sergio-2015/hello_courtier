@@ -1,10 +1,18 @@
 class BrokerAgency < ActiveRecord::Base
   belongs_to :broker
-  has_many :broker_agency_expertises
+  has_many :broker_agency_expertises, dependent: :destroy
   has_many :expertises, through: :broker_agency_expertises
 
-  validates :broker_id, :business_status, :name, :phone_number, :street, :zipcode, :city, presence: true
+  # attr_accessor juste pour voir si la variable :expertise_id peut être stockée
+  attr_accessor :expertise_id_1
+  attr_accessor :expertise_id_2
+  attr_accessor :expertise_id_3
+  attr_accessor :expertise_id_4
 
+  # Ajout pour faire le nested form afin de créer les broker_agency_expertises en même temps que l'agence
+  accepts_nested_attributes_for :broker_agency_expertises, allow_destroy: true
+
+  validates :broker_id, :business_status, :name, :phone_number, :street, :zipcode, :city, presence: true
   validates_format_of :email, :with => /\A[-a-z0-9_+\.]+\@([-a-z0-9]+\.)+[a-z0-9]{2,4}\z/i
   # validates_format_of :phone_number, :with => /\A0[0-9]([-. ]?\d{2}){4}[-. ]?\z/
   # validates_format_of :website, :with => /\A(http|https):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?\z/, allow_blank: true
@@ -13,4 +21,5 @@ class BrokerAgency < ActiveRecord::Base
 
   geocoded_by :complete_adress
   after_validation(:geocode, { :if => :complete_adress_changed? })
+
 end
