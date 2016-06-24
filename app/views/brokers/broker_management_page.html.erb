@@ -258,7 +258,7 @@
                       <%= f.label :expertise_id_3, "Expertise" %>
                     </div>
                     <div class="broker-profile-content-create_agency-form-main-group-centre">
-                      <%= f.select :expertise_id_3, options_from_collection_for_select(@expertises, :id, :name, 21) %>
+                      <%= f.select :expertise_id_3, options_from_collection_for_select(@expertises, :id, :name, 21), {}, { disabled: true}  %>
                     </div>
                     <div class="broker-profile-content-create_agency-form-main-group-droite">
                       <span id="add_an_expertise_3"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp Ajouter une expertise</span>
@@ -270,7 +270,7 @@
                       <%= f.label :expertise_id_4, "Expertise" %>
                     </div>
                     <div class="broker-profile-content-create_agency-form-main-group-centre">
-                      <%= f.select :expertise_id_4, options_from_collection_for_select(@expertises, :id, :name, 22) %>
+                      <%= f.select :expertise_id_4, options_from_collection_for_select(@expertises, :id, :name, 22), {}, { disabled: true}  %>
                     </div>
                     <div class="broker-profile-content-create_agency-form-main-group-droite">
                     </div>

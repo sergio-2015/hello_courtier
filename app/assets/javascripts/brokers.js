@@ -18,9 +18,11 @@ $(document).ready(function() {
     if($('#expertise_group_1').hasClass("hidden")) {
       console.log("ok I recognize the condition");
       $('#expertise_group_1').removeClass( "hidden" );
+      $('#broker_agency_expertise_id_2').prop('disabled', false);
     }
     else {
       $('#expertise_group_1').addClass( "hidden" );
+      $('#broker_agency_expertise_id_2').prop('disabled', true);
     };
   });
 
@@ -29,9 +31,11 @@ $(document).ready(function() {
     if($('#expertise_group_2').hasClass("hidden")) {
       console.log("ok I recognize the condition");
       $('#expertise_group_2').removeClass( "hidden" );
+      $('#broker_agency_expertise_id_3').prop('disabled', false);
     }
     else {
       $('#expertise_group_2').addClass( "hidden" );
+      $('#broker_agency_expertise_id_3').prop('disabled', true);
     };
   });
 
@@ -40,9 +44,11 @@ $(document).ready(function() {
     if($('#expertise_group_3').hasClass("hidden")) {
       console.log("ok I recognize the condition");
       $('#expertise_group_3').removeClass( "hidden" );
+      $('#broker_agency_expertise_id_4').prop('disabled', false);
     }
     else {
       $('#expertise_group_3').addClass( "hidden" );
+      $('#broker_agency_expertise_id_4').prop('disabled', true);
     };
   });
 
