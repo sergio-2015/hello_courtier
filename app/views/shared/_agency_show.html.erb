@@ -1,0 +1,134 @@
+<div class="agency_show">
+  <%# if params[:action] == "show" %>
+    <div class="agency_show-cover">
+      <div class="agency_show-cover-title">
+        <div class="agency_show-cover-title-name">
+          <h1><%= agency.name %></h1>
+        </div>
+        <div class="agency_show-cover-title-coordinates">
+          <h5><%= agency.complete_adress %></h5>
+          <% if agency.website.present? %>
+            <% if agency.website[/\Ahttp:\/\//] || agency.website[/\Ahttps:\/\//] %>
+              <%= link_to agency.website, target: "_blank" do %>
+                <p><i class="fa fa-external-link" aria-hidden="true"></i>&nbsp Voir le site internet de l'agence</p>
+              <% end %>
+            <% else %>
+              <%= link_to "http://#{agency.website}", target: "_blank" do %>
+                <p><i class="fa fa-external-link" aria-hidden="true"></i>&nbsp Voir le site internet de l'agence</p>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <% if agency.facebook_account.present? %>
+            <% if agency.facebook_account[/\Ahttp:\/\//] || agency.facebook_account[/\Ahttps:\/\//] %>
+              <%= link_to agency.facebook_account, target: "_blank" do %>
+                <p><i class="fa fa-facebook-square" aria-hidden="true"></i>&nbsp Suivre sur Facebook </p>
+              <% end %>
+            <% else %>
+              <%= link_to "http://#{agency.facebook_account}", target: "_blank" do %>
+                <p><i class="fa fa-facebook-square" aria-hidden="true"></i>&nbsp Suivre sur Facebook </p>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <% if agency.linkedin_account.present? %>
+            <% if agency.linkedin_account[/\Ahttp:\/\//] || agency.linkedin_account[/\Ahttps:\/\//] %>
+              <%= link_to agency.linkedin_account, target: "_blank" do %>
+                <p><i class="fa fa-linkedin-square" aria-hidden="true"></i>&nbsp Suivre LinkedIn</p>
+              <% end %>
+            <% else %>
+              <%= link_to "http://#{agency.linkedin_account}", target: "_blank" do %>
+                <p><i class="fa fa-linkedin-square" aria-hidden="true"></i>&nbsp Suivre sur LinkedIn</p>
+              <% end %>
+            <% end %>
+          <% end %>
+
+          <% if agency.twitter_account.present? %>
+            <% if agency.twitter_account[/\Ahttp:\/\//] || agency.twitter_account[/\Ahttps:\/\//] %>
+              <%= link_to agency.twitter_account, target: "_blank" do %>
+                <p><i class="fa fa-twitter-square" aria-hidden="true"></i>&nbsp Suivre sur Twitter</p>
+              <% end %>
+            <% else %>
+              <%= link_to "http://#{agency.twitter_account}", target: "_blank" do %>
+                <p><i class="fa fa-twitter-square" aria-hidden="true"></i>&nbsp Suivre sur Twitter</p>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+
+      <div class="agency_show-cover-cta">
+        <div class="agency_show-cover-cta-item">
+          <span id="show_agency_phone_number"><i class="fa fa-phone-square" aria-hidden="true"></i> &nbsp Voir le n° de téléphone</span>
+          <span class="hidden" id="agency_phone_number_is_shown"> <i class="fa fa-phone-square" aria-hidden="true"></i> &nbsp <%= agency.phone_number.gsub(/\s+/, "").gsub(/(.{2})(?=.)/, '\1 \2') %></span>
+        </div>
+
+        <% if agency.email.present? %>
+          <div class="agency_show-cover-cta-item">
+            <span><i class="fa fa-envelope" aria-hidden="true"></i> &nbsp Envoyer un message</span>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+  <%# else %>
+  <%# end %>
+
+    <div class="agency_show-content">
+      <div class="agency_show-content-expertises">
+        <h2>Domaines d'expertise</h2>
+        <ul>
+          <% agency.expertises.each do |expertise| %>
+            <li><i class="fa fa-check-square-o" aria-hidden="true"></i> &nbsp <%= expertise.name %> </li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="agency_show-content-description">
+        <h2>Description</h2>
+        <p><%= agency.description %></p>
+      </div>
+    </div>
+
+    <div class="agency_show-map" id="agency_map">
+
+    </div>
+
+  <% if params[:action] == "show" %>
+    <div class="agency_show-closest_agencies">
+      <h2>Autres agences proches</h2>
+      <div class="container">
+        <div class="row">
+          <% @closest_agencies.each do |competitor_agency| %>
+            <div class="col-sm-6 col-md-3 text-center">
+              <%= render "shared/agency_card", agency: competitor_agency %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+
+
+
+</div>
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+    $(document).on('ready', function() {
+      handler = Gmaps.build('Google');
+      handler.buildMap({ internal: { id: 'agency_map' } }, function(){
+        markers = handler.addMarkers(<%= raw @markers.to_json %>);
+        handler.bounds.extendWith(markers);
+        handler.fitMapToBounds();
+      });
+    })
+  <% end %>
+<% end %>
+
+
+
+

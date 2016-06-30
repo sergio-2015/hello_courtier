@@ -279,3 +279,38 @@
   font-size: 14px;
 }
 
+.broker_agency_layer {
+  margin: 100px;
+  border: 1px solid $light-grey;
+  border-radius: 3px;
+}
+
+.new_agency_creation {
+  margin: 20px 0px 100px 0px;
+}
+
+#new_agency_creation {
+  cursor: pointer;
+  padding: 14px 20px;
+  color: white;
+  font-weight: 300;
+  font-size: 14px;
+  border: none;
+  background-color: $sedondary-info;
+  border-radius: 3px;
+  &:hover {
+    background-color: $brand-blue;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+

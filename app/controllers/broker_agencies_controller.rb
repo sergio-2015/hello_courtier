@@ -2,7 +2,7 @@ class BrokerAgenciesController < ApplicationController
   include ExpertiseAreas
 
   skip_before_action :authenticate_person!, only: [:index, :show]
-  before_action :set_broker_agency, only: [:show]
+  before_action :set_broker_agency, only: [:show, :edit]
   before_action :set_all_broker_agencies, :set_user_wishes_to_expertise_correspondance, :set_expertise_wanted_by_user, only: [:index]
 
   def index
@@ -19,7 +19,14 @@ class BrokerAgenciesController < ApplicationController
 
   def show
     # @alert_message = "Bienvenu sur la fiche de #{@broker_agency.name}"
-    @broker_agency_coordinates = { latitude: @broker_agency.latitude, longitude: @broker_agency.longitude }
+    # @broker_agency_coordinates = { latitude: @broker_agency.latitude, longitude: @broker_agency.longitude }
+
+    @markers = Gmaps4rails.build_markers(@broker_agency) do |agency, marker|
+      marker.lat agency.latitude
+      marker.lng agency.longitude
+    end
+
+    @closest_agencies = @broker_agency.nearbys( radius = 20 ).first(4)
   end
 
   def new
@@ -31,6 +38,7 @@ class BrokerAgenciesController < ApplicationController
     @new_agency.broker = current_broker
     @new_agency.business_status = "free"
     if @new_agency.save
+      @new_agency.city = @new_agency.city.upcase
       @new_agency.complete_adress = @new_agency.street + " " + @new_agency.zipcode + " " + @new_agency.city
       @new_agency.save
 
@@ -45,6 +53,10 @@ class BrokerAgenciesController < ApplicationController
     else
       raise # attention, mettre redirection vers new
     end
+  end
+
+  def edit
+    raise
   end
 
 

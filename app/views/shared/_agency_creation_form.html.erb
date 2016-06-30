@@ -1,0 +1,182 @@
+<div class="broker-profile-content-create_agency">
+  <div class="broker-profile-content-create_agency-title">
+    <h2>Créez la fiche de votre agence</h2>
+  </div>
+  <div class="broker-profile-content-create_agency-form">
+    <%= form_for(@new_agency, url: broker_agencies_path, method: :post) do |f| %>
+      <div class="broker-profile-content-create_agency-form-main">
+        <div class="broker-profile-content-create_agency-form-main-group">
+          <div class="broker-profile-content-create_agency-form-main-group-right">
+            <%= f.label :name, "Nom de l'agence" %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-left">
+            <%= f.text_field :name, placeholder: "Nom de l'agence" %>
+          </div>
+        </div>
+      </div>
+      <div class="broker-profile-content-create_agency-form-main">
+        <div class="broker-profile-content-create_agency-form-main-group">
+          <div class="broker-profile-content-create_agency-form-main-group-right">
+            <%= f.label :street, "Adresse" %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-left">
+            <%= f.text_field :street, placeholder: "Adresse" %>
+          </div>
+        </div>
+        <div class="broker-profile-content-create_agency-form-main-group">
+          <div class="broker-profile-content-create_agency-form-main-group-right">
+            <%= f.label :zipcode, "Code postal" %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-left">
+            <%= f.text_field :zipcode, placeholder: "Code postal" %>
+          </div>
+        </div>
+        <div class="broker-profile-content-create_agency-form-main-group">
+          <div class="broker-profile-content-create_agency-form-main-group-right">
+            <%= f.label :city, "Ville" %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-left">
+            <%= f.text_field :city, placeholder: "Ville" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="broker-profile-content-create_agency-form-main">
+        <div class="broker-profile-content-create_agency-form-main-group">
+          <div class="broker-profile-content-create_agency-form-main-group-right">
+            <%= f.label :phone_number, "Téléphone" %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-left">
+            <%= f.text_field :phone_number, placeholder: "Téléphone" %>
+          </div>
+        </div>
+        <div class="broker-profile-content-create_agency-form-main-group">
+          <div class="broker-profile-content-create_agency-form-main-group-right">
+            <%= f.label :email, "Email de l'agence" %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-left">
+            <%= f.email_field :email, placeholder: "Email" %>
+          </div>
+        </div>
+        <div class="broker-profile-content-create_agency-form-main-group">
+          <div class="broker-profile-content-create_agency-form-main-group-right">
+            <%= f.label :website, "Site internet" %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-left">
+            <%= f.text_field :website, placeholder: "Site internet" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="broker-profile-content-create_agency-form-main">
+        <div class="broker-profile-content-create_agency-form-main-group">
+          <div class="broker-profile-content-create_agency-form-main-group-right">
+            <%= f.label :description, "Description" %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-left">
+            <%= f.text_area :description, placeholder: "Description", rows: 5 %>
+          </div>
+        </div>
+        <div class="broker-profile-content-create_agency-form-main-group">
+          <div class="broker-profile-content-create_agency-form-main-group-right">
+            <%= f.label :creation_year, "Année de création" %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-left">
+            <%= f.number_field :creation_year, placeholder: "Date de création de l'agence" %>
+          </div>
+        </div>
+        <div class="broker-profile-content-create_agency-form-main-group">
+          <div class="broker-profile-content-create_agency-form-main-group-right">
+            <%= f.label :siret, "Numéro de SIRET" %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-left">
+            <%= f.text_field :siret, placeholder: "N° de Siret" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="broker-profile-content-create_agency-form-main">
+        <div class="broker-profile-content-create_agency-form-main-group">
+          <div class="broker-profile-content-create_agency-form-main-group-right">
+            <%= f.label :facebook_account, "Page Facebook" %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-left">
+            <%= f.text_field :facebook_account, placeholder: "Facebook" %>
+          </div>
+        </div>
+        <div class="broker-profile-content-create_agency-form-main-group">
+          <div class="broker-profile-content-create_agency-form-main-group-right">
+            <%= f.label :twitter_account, "Twitter" %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-left">
+            <%= f.text_field :twitter_account, placeholder: "Page Twitter" %>
+          </div>
+        </div>
+        <div class="broker-profile-content-create_agency-form-main-group">
+          <div class="broker-profile-content-create_agency-form-main-group-right">
+            <%= f.label :linkedin_account, "LinkedIn" %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-left">
+            <%= f.text_field :linkedin_account, placeholder: "Page LinkedIn" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="broker-profile-content-create_agency-form-main">
+        <div class="broker-profile-content-create_agency-form-main-group">
+          <div class="broker-profile-content-create_agency-form-main-group-gauche">
+            <%= f.label :expertise_id_1, "Expertise" %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-centre">
+            <%= f.select :expertise_id_1, options_from_collection_for_select(@expertises, :id, :name, 19) %>
+          </div>
+          <div class="broker-profile-content-create_agency-form-main-group-droite">
+            <span id="add_an_expertise_1"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp Ajouter une expertise</span>
+          </div>
+        </div>
+
+          <div class="broker-profile-content-create_agency-form-main-group hidden" id="expertise_group_1">
+            <div class="broker-profile-content-create_agency-form-main-group-gauche">
+              <%= f.label :expertise_id_2, "Expertise" %>
+            </div>
+            <div class="broker-profile-content-create_agency-form-main-group-centre">
+              <%= f.select :expertise_id_2, options_from_collection_for_select(@expertises, :id, :name, 20), {}, { disabled: true} %>
+            </div>
+            <div class="broker-profile-content-create_agency-form-main-group-droite">
+              <span id="add_an_expertise_2"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp Ajouter une expertise</span>
+            </div>
+          </div>
+
+          <div class="broker-profile-content-create_agency-form-main-group hidden" id="expertise_group_2">
+            <div class="broker-profile-content-create_agency-form-main-group-gauche">
+              <%= f.label :expertise_id_3, "Expertise" %>
+            </div>
+            <div class="broker-profile-content-create_agency-form-main-group-centre">
+              <%= f.select :expertise_id_3, options_from_collection_for_select(@expertises, :id, :name, 21), {}, { disabled: true}  %>
+            </div>
+            <div class="broker-profile-content-create_agency-form-main-group-droite">
+              <span id="add_an_expertise_3"><i class="fa fa-plus-circle" aria-hidden="true"></i>&nbsp Ajouter une expertise</span>
+            </div>
+          </div>
+
+          <div class="broker-profile-content-create_agency-form-main-group hidden" id="expertise_group_3">
+            <div class="broker-profile-content-create_agency-form-main-group-gauche">
+              <%= f.label :expertise_id_4, "Expertise" %>
+            </div>
+            <div class="broker-profile-content-create_agency-form-main-group-centre">
+              <%= f.select :expertise_id_4, options_from_collection_for_select(@expertises, :id, :name, 22), {}, { disabled: true}  %>
+            </div>
+            <div class="broker-profile-content-create_agency-form-main-group-droite">
+            </div>
+          </div>
+
+      </div>
+
+      <div class="broker-profile-content-create_agency-form-button cta-transaction large_button text-center">
+        <%= f.button "Valider" %>
+      </div>
+
+
+    <% end %>
+  </div>
+</div>

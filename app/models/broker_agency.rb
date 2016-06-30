@@ -22,4 +22,14 @@ class BrokerAgency < ActiveRecord::Base
   geocoded_by :complete_adress
   after_validation(:geocode, { :if => :complete_adress_changed? })
 
+  # before_validation :strip_whitespaces, only: [:phone_number]
+
+  private
+
+  # def strip_whitespaces
+  #   self.phone_number = self.phone_number.strip unless self.email.nil?
+  # end
+
+
+
 end

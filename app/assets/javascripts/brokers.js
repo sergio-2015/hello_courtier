@@ -40,9 +40,7 @@ $(document).ready(function() {
   });
 
   $('#add_an_expertise_3').click(function() {
-    console.log("ok clicked");
     if($('#expertise_group_3').hasClass("hidden")) {
-      console.log("ok I recognize the condition");
       $('#expertise_group_3').removeClass( "hidden" );
       $('#broker_agency_expertise_id_4').prop('disabled', false);
     }
@@ -52,6 +50,14 @@ $(document).ready(function() {
     };
   });
 
+  $('#new_agency_creation').click(function() {
+    if($('#new_agency_creation_form').hasClass("hidden")) {
+      $('#new_agency_creation_form').removeClass( "hidden" );
+    }
+    else {
+      $('#new_agency_creation_form').addClass( "hidden" );
+    };
+  });
 
 
 });

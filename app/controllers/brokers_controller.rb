@@ -5,6 +5,13 @@ class BrokersController < ApplicationController
     @new_agency = BrokerAgency.new
     @expertises = Expertise.all
     @broker_agencies = current_broker.broker_agencies
+
+
+    @markers = Gmaps4rails.build_markers(@broker_agencies) do |agency, marker|
+      marker.lat agency.latitude
+      marker.lng agency.longitude
+    end
+
   end
 
   def update_password
@@ -16,6 +23,7 @@ class BrokersController < ApplicationController
       render "edit"
     end
   end
+
 
   private
 
