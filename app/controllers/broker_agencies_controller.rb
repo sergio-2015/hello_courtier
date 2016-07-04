@@ -2,7 +2,7 @@ class BrokerAgenciesController < ApplicationController
   include ExpertiseAreas
 
   skip_before_action :authenticate_person!, only: [:index, :show]
-  before_action :set_broker_agency, only: [:show]
+  before_action :set_broker_agency, only: [:show, :edit, :update, :destroy]
   before_action :set_all_broker_agencies, :set_user_wishes_to_expertise_correspondance, :set_expertise_wanted_by_user, only: [:index]
 
   def index
@@ -19,17 +19,73 @@ class BrokerAgenciesController < ApplicationController
 
   def show
     # @alert_message = "Bienvenu sur la fiche de #{@broker_agency.name}"
-    @broker_agency_coordinates = { latitude: @broker_agency.latitude, longitude: @broker_agency.longitude }
+    # @broker_agency_coordinates = { latitude: @broker_agency.latitude, longitude: @broker_agency.longitude }
+
+    @markers = Gmaps4rails.build_markers(@broker_agency) do |agency, marker|
+      marker.lat agency.latitude
+      marker.lng agency.longitude
+    end
+
+    @closest_agencies = @broker_agency.nearbys( radius = 20 ).first(4)
   end
 
-  # def new
-  # end
+  def new
+    @broker_agency = BrokerAgency.new
+  end
 
-  # def create
-  # end
+  def create
+    @broker_agency = BrokerAgency.new(broker_agency_params)
+    @broker_agency.broker = current_broker
+    @broker_agency.business_status = "free"
+    if @broker_agency.save
+      @broker_agency.city = @broker_agency.city.upcase
+      @broker_agency.complete_adress = @broker_agency.street + " " + @broker_agency.zipcode + " " + @broker_agency.city
+      @broker_agency.save
 
+      @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_1, broker_agency_id: @broker_agency.id)
+      @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_2, broker_agency_id: @broker_agency.id)
+      @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_3, broker_agency_id: @broker_agency.id)
+      @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_4, broker_agency_id: @broker_agency.id)
+
+      # @new_agency.broker_agency_expertises.create(expertise_id: @new_agency.expertise_ids, broker_agency_id: @new_agency.id)
+
+      redirect_to broker_management_page_path, notice: 'Votre agence a été enregistrée avec succès'
+    else
+      raise # attention, mettre redirection vers new
+    end
+  end
+
+  def edit
+    @expertises = Expertise.all
+  end
+
+  def update
+    @broker_agency.update(broker_agency_params)
+    @broker_agency.city = @broker_agency.city.upcase
+    @broker_agency.complete_adress = @broker_agency.street + " " + @broker_agency.zipcode + " " + @broker_agency.city
+    @broker_agency.save
+
+    @broker_agency.expertises.destroy
+
+    @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_1, broker_agency_id: @broker_agency.id)
+    @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_2, broker_agency_id: @broker_agency.id)
+    @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_3, broker_agency_id: @broker_agency.id)
+    @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_4, broker_agency_id: @broker_agency.id)
+
+
+    redirect_to broker_management_page_path, notice: 'Votre agence a été mise à jour avec succès'
+  end
+
+  def destroy
+    @broker_agency.destroy
+    redirect_to broker_management_page_path, notice: 'Votre agence a été supprimée avec succès'
+  end
 
   private
+
+  def broker_agency_params
+    params.require(:broker_agency).permit(:name, :phone_number, :email, :website, :twitter_account, :facebook_account, :linkedin_account, :street, :zipcode, :city, :creation_year, :siret, :description, :expertise_id_1, :expertise_id_2, :expertise_id_3, :expertise_id_4)  #  , :expertise_id_1, :expertise_id_2, :expertise_id_3, :expertise_id_4     broker_agency_expertises_attributes: [:broker_agency_id], expertise_attributes: [:id]
+  end
 
   def set_all_broker_agencies
     @broker_agencies = BrokerAgency.all

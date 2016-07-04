@@ -14,6 +14,4 @@ module BrokersHelper
   end
 
 
-
-
 end

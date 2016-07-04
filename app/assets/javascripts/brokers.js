@@ -3,9 +3,7 @@
 
 $(document).ready(function() {
   $('#password_change').click(function() {
-    console.log("ok clicked");
     if($('#password_change_fields').hasClass("hidden")) {
-      console.log("ok I recognize the condition");
       $('#password_change_fields').removeClass( "hidden" );
     }
     else {
@@ -13,8 +11,47 @@ $(document).ready(function() {
     };
   });
 
+  $('#add_an_expertise_1').click(function() {
+    if($('#expertise_group_1').hasClass("hidden")) {
+      $('#expertise_group_1').removeClass( "hidden" );
+      $('#broker_agency_expertise_id_2').prop('disabled', false);
+    }
+    else {
+      $('#expertise_group_1').addClass( "hidden" );
+      $('#broker_agency_expertise_id_2').prop('disabled', true);
+    };
+  });
 
+  $('#add_an_expertise_2').click(function() {
+    if($('#expertise_group_2').hasClass("hidden")) {
+      $('#expertise_group_2').removeClass( "hidden" );
+      $('#broker_agency_expertise_id_3').prop('disabled', false);
+    }
+    else {
+      $('#expertise_group_2').addClass( "hidden" );
+      $('#broker_agency_expertise_id_3').prop('disabled', true);
+    };
+  });
 
+  $('#add_an_expertise_3').click(function() {
+    if($('#expertise_group_3').hasClass("hidden")) {
+      $('#expertise_group_3').removeClass( "hidden" );
+      $('#broker_agency_expertise_id_4').prop('disabled', false);
+    }
+    else {
+      $('#expertise_group_3').addClass( "hidden" );
+      $('#broker_agency_expertise_id_4').prop('disabled', true);
+    };
+  });
+
+  $('#new_agency_creation').click(function() {
+    if($('#new_agency_creation_form').hasClass("hidden")) {
+      $('#new_agency_creation_form').removeClass( "hidden" );
+    }
+    else {
+      $('#new_agency_creation_form').addClass( "hidden" );
+    };
+  });
 
 
 });

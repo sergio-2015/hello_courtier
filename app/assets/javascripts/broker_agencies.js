@@ -36,7 +36,16 @@ $(document).scroll(function() {
     $('#results-map').css('height', 'calc(100vh - 70px)'); // restore when you scroll up
 });
 
-
+$(document).ready(function() {
+  $('#show_agency_phone_number').click(function() {
+    $('#show_agency_phone_number').addClass( "hidden" );
+    $('#agency_phone_number_is_shown').removeClass( "hidden" );
+  });
+  $('#agency_phone_number_is_shown').click(function() {
+    $('#agency_phone_number_is_shown').addClass( "hidden" );
+    $('#show_agency_phone_number').removeClass( "hidden" );
+  });
+});
 
 
 // height: calc(100vh - 70px)

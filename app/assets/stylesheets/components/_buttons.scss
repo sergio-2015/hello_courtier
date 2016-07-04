@@ -11,6 +11,17 @@
       border: 1px solid $light-grey;
     }
   }
+  & button {
+    padding: 20px 2em;
+    border-radius: 3px;
+    border: none;
+    background-color: $brand-color;
+    color: white;
+    font-weight: 700;
+    &:hover {
+      background-color: $content;
+    }
+  }
 }
 
 
@@ -31,7 +42,11 @@
   }
 }
 
-
+.large_button {
+  & button {
+    padding: 20px 6em;
+  }
+}
 
 
 

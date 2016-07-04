@@ -90,6 +90,13 @@
             </div>
           <% end %>
         </div>
+        <div>
+          <%= link_to broker_path(current_broker), method: :delete, data: { confirm: "Confirmer la suppression de mon compte (les fiches de mes agences ainsi que les avis clients seront également effacés)" } do %>
+            <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp<span>Supprimer mon compte</span>
+          <% end %>
+
+
+        </div>
       </div>
     </div>
     <div class="broker-profile-content">
@@ -98,17 +105,53 @@
           <h1>Donnez un maximum de visibilité à votre agence !</h1>
         </div>
       </div>
-      <% if current_broker.broker_agencies == nil %>
-        <div class="broker-profile-content-agency-form">
-        </div>
+
+      <% if @broker_agencies.size == 0 %>
+        <%= render "shared/agency_creation_form", new_agency: @broker_agency %>
       <% else %>
+        <% @broker_agencies.each do |agency| %>
+          <div class="broker_agency_layer">
+            <%= link_to edit_broker_agency_path(agency) do %>
+              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>&nbsp<span>Mettre à jour</span>
+            <% end %>
+            <span>&nbsp &nbsp &nbsp &nbsp &nbsp </span>
+            <%= link_to broker_agency_path(agency), method: :delete, data: { confirm: "Confirmer la suppression de la fiche de cette agence" } do %>
+              <i class="fa fa-trash-o" aria-hidden="true"></i>&nbsp<span>Supprimer</span>
+            <% end %>
+
+            <%= render "shared/agency_show", agency: agency %>
+          </div>
+        <% end %>
+
+        <div class="text-center new_agency_creation">
+          <span id="new_agency_creation">Créer une nouvelle agence</span>
+        </div>
+
+        <div id="new_agency_creation_form" class="hidden">
+          <%= render "shared/agency_creation_form", new_agency: @broker_agency %>
+        </div>
+
       <% end %>
 
 
-
+      <div class="modal fade" id="broker_agency_update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" id="broker_agency_update_div" role="document">
+          <div class="modal-content">
+            <div class="modal-body">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <%= render "shared/agency_creation_form", new_agency: @broker_agency %>
+            </div>
+          </div>
+        </div>
+      </div>
 
 
     </div>
   </div>
 <% end %>
+
+
+
+
+
 
