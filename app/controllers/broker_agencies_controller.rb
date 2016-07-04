@@ -2,7 +2,7 @@ class BrokerAgenciesController < ApplicationController
   include ExpertiseAreas
 
   skip_before_action :authenticate_person!, only: [:index, :show]
-  before_action :set_broker_agency, only: [:show, :edit]
+  before_action :set_broker_agency, only: [:show, :edit, :update, :destroy]
   before_action :set_all_broker_agencies, :set_user_wishes_to_expertise_correspondance, :set_expertise_wanted_by_user, only: [:index]
 
   def index
@@ -30,22 +30,22 @@ class BrokerAgenciesController < ApplicationController
   end
 
   def new
-    @new_agency = BrokerAgency.new
+    @broker_agency = BrokerAgency.new
   end
 
   def create
-    @new_agency = BrokerAgency.new(broker_agency_params)
-    @new_agency.broker = current_broker
-    @new_agency.business_status = "free"
-    if @new_agency.save
-      @new_agency.city = @new_agency.city.upcase
-      @new_agency.complete_adress = @new_agency.street + " " + @new_agency.zipcode + " " + @new_agency.city
-      @new_agency.save
+    @broker_agency = BrokerAgency.new(broker_agency_params)
+    @broker_agency.broker = current_broker
+    @broker_agency.business_status = "free"
+    if @broker_agency.save
+      @broker_agency.city = @broker_agency.city.upcase
+      @broker_agency.complete_adress = @broker_agency.street + " " + @broker_agency.zipcode + " " + @broker_agency.city
+      @broker_agency.save
 
-      @new_agency.broker_agency_expertises.create(expertise_id: @new_agency.expertise_id_1, broker_agency_id: @new_agency.id)
-      @new_agency.broker_agency_expertises.create(expertise_id: @new_agency.expertise_id_2, broker_agency_id: @new_agency.id)
-      @new_agency.broker_agency_expertises.create(expertise_id: @new_agency.expertise_id_3, broker_agency_id: @new_agency.id)
-      @new_agency.broker_agency_expertises.create(expertise_id: @new_agency.expertise_id_4, broker_agency_id: @new_agency.id)
+      @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_1, broker_agency_id: @broker_agency.id)
+      @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_2, broker_agency_id: @broker_agency.id)
+      @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_3, broker_agency_id: @broker_agency.id)
+      @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_4, broker_agency_id: @broker_agency.id)
 
       # @new_agency.broker_agency_expertises.create(expertise_id: @new_agency.expertise_ids, broker_agency_id: @new_agency.id)
 
@@ -56,9 +56,30 @@ class BrokerAgenciesController < ApplicationController
   end
 
   def edit
-    raise
+    @expertises = Expertise.all
   end
 
+  def update
+    @broker_agency.update(broker_agency_params)
+    @broker_agency.city = @broker_agency.city.upcase
+    @broker_agency.complete_adress = @broker_agency.street + " " + @broker_agency.zipcode + " " + @broker_agency.city
+    @broker_agency.save
+
+    @broker_agency.expertises.destroy
+
+    @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_1, broker_agency_id: @broker_agency.id)
+    @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_2, broker_agency_id: @broker_agency.id)
+    @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_3, broker_agency_id: @broker_agency.id)
+    @broker_agency.broker_agency_expertises.create(expertise_id: @broker_agency.expertise_id_4, broker_agency_id: @broker_agency.id)
+
+
+    redirect_to broker_management_page_path, notice: 'Votre agence a été mise à jour avec succès'
+  end
+
+  def destroy
+    @broker_agency.destroy
+    redirect_to broker_management_page_path, notice: 'Votre agence a été supprimée avec succès'
+  end
 
   private
 

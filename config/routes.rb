@@ -5,9 +5,9 @@ Rails.application.routes.draw do
 
   root to: 'pages#home'
 
-  resources :broker_agencies, only: [:index, :show, :new, :create, :edit]
+  resources :broker_agencies, only: [:index, :show, :new, :create, :edit, :update, :destroy]
 
-  resources :brokers, only: [:edit] do
+  resources :brokers, only: [:edit, :destroy] do
     collection do
       patch 'update_password'
     end

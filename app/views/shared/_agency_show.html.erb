@@ -87,15 +87,14 @@
 
       <div class="agency_show-content-description">
         <h2>Description</h2>
-        <p><%= agency.description %></p>
+        <p><%= simple_format(agency.description) %></p>
       </div>
     </div>
 
-    <div class="agency_show-map" id="agency_map">
-
-    </div>
-
   <% if params[:action] == "show" %>
+
+    <div class="agency_show-map" id="agency_map"></div>
+
     <div class="agency_show-closest_agencies">
       <h2>Autres agences proches</h2>
       <div class="container">

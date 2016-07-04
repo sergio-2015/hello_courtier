@@ -3,9 +3,7 @@
 
 $(document).ready(function() {
   $('#password_change').click(function() {
-    console.log("ok clicked");
     if($('#password_change_fields').hasClass("hidden")) {
-      console.log("ok I recognize the condition");
       $('#password_change_fields').removeClass( "hidden" );
     }
     else {
@@ -14,9 +12,7 @@ $(document).ready(function() {
   });
 
   $('#add_an_expertise_1').click(function() {
-    console.log("ok clicked");
     if($('#expertise_group_1').hasClass("hidden")) {
-      console.log("ok I recognize the condition");
       $('#expertise_group_1').removeClass( "hidden" );
       $('#broker_agency_expertise_id_2').prop('disabled', false);
     }
@@ -27,9 +23,7 @@ $(document).ready(function() {
   });
 
   $('#add_an_expertise_2').click(function() {
-    console.log("ok clicked");
     if($('#expertise_group_2').hasClass("hidden")) {
-      console.log("ok I recognize the condition");
       $('#expertise_group_2').removeClass( "hidden" );
       $('#broker_agency_expertise_id_3').prop('disabled', false);
     }

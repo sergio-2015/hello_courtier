@@ -184,7 +184,7 @@
               flex: 25% 0 0;
             }
             &-centre {
-              flex: 50% 0 0;
+              flex: 40% 0 0;
               & select {
                 font-family: $base-font;
                 font-weight: 300;
@@ -201,7 +201,7 @@
               }
             }
             &-droite {
-              flex: 25% 0 0;
+              flex: 35% 0 0;
               text-align: right;
             }
           }

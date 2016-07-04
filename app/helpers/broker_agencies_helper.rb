@@ -10,4 +10,5 @@ module BrokerAgenciesHelper
     return @cities_for_search
   end
 
+
 end
